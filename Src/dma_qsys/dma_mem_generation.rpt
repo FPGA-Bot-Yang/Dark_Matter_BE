@@ -1,0 +1,167 @@
+Info: Starting: Create simulation model
+Info: ip-generate --project-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation --output-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\simulation --file-set=SIM_VERILOG --report-file=html:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.html --report-file=sopcinfo:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem.sopcinfo --report-file=csv:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.csv --report-file=spd:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.spd --report-file=cmp:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.cmp --report-file=sip:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\simulation\dma_mem.sip --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem.qsys --remove-qsys-generate-warning --allow-mixed-language-simulation
+Progress: Loading Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_mem.qsys
+Progress: Reading input file
+Progress: Adding Avalon_master [master_template 1.0]
+Progress: Parameterizing module Avalon_master
+Progress: Adding Avalon_slave [slave_template 2.0]
+Progress: Parameterizing module Avalon_slave
+Progress: Adding clk_125 [clock_source 14.1]
+Progress: Parameterizing module clk_125
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding cpu [altera_nios2_gen2 14.1]
+Progress: Parameterizing module cpu
+Progress: Adding cpu_memory [altera_avalon_onchip_memory2 14.1]
+Progress: Parameterizing module cpu_memory
+Progress: Adding dma [altera_avalon_dma 14.1]
+Progress: Parameterizing module dma
+Progress: Adding jtag [altera_avalon_jtag_uart 14.1]
+Progress: Parameterizing module jtag
+Progress: Adding mm_traffic_generator [altera_avalon_mm_traffic_generator 14.1]
+Progress: Parameterizing module mm_traffic_generator
+Progress: Adding sdram [altera_mem_if_ddr3_emif 14.1]
+Progress: Parameterizing module sdram
+Progress: Adding sysid [altera_avalon_sysid_qsys 14.1]
+Progress: Parameterizing module sysid
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: dma_mem.sdram: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
+Warning: dma_mem.sdram.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
+Warning: dma_mem.sdram: sdram.status must be exported, or connected to a matching conduit.
+Warning: dma_mem.sdram: sdram.pll_sharing must be exported, or connected to a matching conduit.
+Info: dma_mem: Generating dma_mem "dma_mem" for SIM_VERILOG
+Info: sdram: "dma_mem" instantiated altera_mem_if_ddr3_emif "sdram"
+Info: pll0: "sdram" instantiated altera_mem_if_ddr3_pll "pll0"
+Info: p0: Generating clock pair generator
+Info: p0: Generating dma_mem_sdram_p0_altdqdqs
+Info: p0: "sdram" instantiated altera_mem_if_ddr3_phy_core "p0"
+Info: m0: "sdram" instantiated altera_mem_if_ddr3_afi_mux "m0"
+Info: s0: Generating Qsys sequencer system
+Info: s0: QSYS sequencer system generated successfully
+Info: s0: "sdram" instantiated altera_mem_if_ddr3_qseq "s0"
+Info: c0: "sdram" instantiated altera_mem_if_nextgen_ddr3_controller "c0"
+Info: oct0: "sdram" instantiated altera_mem_if_oct "oct0"
+Info: dll0: "sdram" instantiated altera_mem_if_dll "dll0"
+Info: ng0: "c0" instantiated altera_mem_if_nextgen_ddr3_controller_core "ng0"
+Info: a0: "c0" instantiated alt_mem_ddrx_mm_st_converter "a0"
+Info: dma_mem: Done "dma_mem" with 11 modules, 131 files
+Info: ip-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.spd --output-directory=E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.spd --output-directory=E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	10 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation --output-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys --report-file=bsf:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem.qsys --remove-qsys-generate-warning
+Progress: Loading Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_mem.qsys
+Progress: Reading input file
+Progress: Adding Avalon_master [master_template 1.0]
+Progress: Parameterizing module Avalon_master
+Progress: Adding Avalon_slave [slave_template 2.0]
+Progress: Parameterizing module Avalon_slave
+Progress: Adding clk_125 [clock_source 14.1]
+Progress: Parameterizing module clk_125
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding cpu [altera_nios2_gen2 14.1]
+Progress: Parameterizing module cpu
+Progress: Adding cpu_memory [altera_avalon_onchip_memory2 14.1]
+Progress: Parameterizing module cpu_memory
+Progress: Adding dma [altera_avalon_dma 14.1]
+Progress: Parameterizing module dma
+Progress: Adding jtag [altera_avalon_jtag_uart 14.1]
+Progress: Parameterizing module jtag
+Progress: Adding mm_traffic_generator [altera_avalon_mm_traffic_generator 14.1]
+Progress: Parameterizing module mm_traffic_generator
+Progress: Adding sdram [altera_mem_if_ddr3_emif 14.1]
+Progress: Parameterizing module sdram
+Progress: Adding sysid [altera_avalon_sysid_qsys 14.1]
+Progress: Parameterizing module sysid
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: dma_mem.sdram: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
+Warning: dma_mem.sdram.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
+Warning: dma_mem.sdram: sdram.status must be exported, or connected to a matching conduit.
+Warning: dma_mem.sdram: sdram.pll_sharing must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation --output-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.html --report-file=sopcinfo:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem.sopcinfo --report-file=cmp:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.cmp --report-file=qip:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\synthesis\dma_mem.qip --report-file=svd:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\synthesis\dma_mem.svd --report-file=regmap:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\synthesis\dma_mem.regmap --report-file=xml:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\dma_mem.xml --report-file=debuginfo:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\synthesis\dma_mem.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_mem.qsys
+Progress: Reading input file
+Progress: Adding Avalon_master [master_template 1.0]
+Progress: Parameterizing module Avalon_master
+Progress: Adding Avalon_slave [slave_template 2.0]
+Progress: Parameterizing module Avalon_slave
+Progress: Adding clk_125 [clock_source 14.1]
+Progress: Parameterizing module clk_125
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding cpu [altera_nios2_gen2 14.1]
+Progress: Parameterizing module cpu
+Progress: Adding cpu_memory [altera_avalon_onchip_memory2 14.1]
+Progress: Parameterizing module cpu_memory
+Progress: Adding dma [altera_avalon_dma 14.1]
+Progress: Parameterizing module dma
+Progress: Adding jtag [altera_avalon_jtag_uart 14.1]
+Progress: Parameterizing module jtag
+Progress: Adding mm_traffic_generator [altera_avalon_mm_traffic_generator 14.1]
+Progress: Parameterizing module mm_traffic_generator
+Progress: Adding sdram [altera_mem_if_ddr3_emif 14.1]
+Progress: Parameterizing module sdram
+Progress: Adding sysid [altera_avalon_sysid_qsys 14.1]
+Progress: Parameterizing module sysid
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: dma_mem.sdram: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
+Warning: dma_mem.sdram.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
+Warning: dma_mem.sdram: sdram.status must be exported, or connected to a matching conduit.
+Warning: dma_mem.sdram: sdram.pll_sharing must be exported, or connected to a matching conduit.
+Info: dma_mem: Generating dma_mem "dma_mem" for QUARTUS_SYNTH
+Info: sdram: "dma_mem" instantiated altera_mem_if_ddr3_emif "sdram"
+Info: pll0: "sdram" instantiated altera_mem_if_ddr3_pll "pll0"
+Info: p0: Generating clock pair generator
+Info: p0: Generating dma_mem_sdram_p0_altdqdqs
+Info: p0: 
+Info: p0: *****************************
+Info: p0: 
+Info: p0: Remember to run the dma_mem_sdram_p0_pin_assignments.tcl
+Info: p0: script after running Synthesis and before Fitting.
+Info: p0: 
+Info: p0: *****************************
+Info: p0: 
+Info: p0: "sdram" instantiated altera_mem_if_ddr3_phy_core "p0"
+Info: m0: "sdram" instantiated altera_mem_if_ddr3_afi_mux "m0"
+Info: s0: Generating Qsys sequencer system
+Info: s0: QSYS sequencer system generated successfully
+Info: s0: "sdram" instantiated altera_mem_if_ddr3_qseq "s0"
+Info: c0: "sdram" instantiated altera_mem_if_nextgen_ddr3_controller "c0"
+Info: oct0: "sdram" instantiated altera_mem_if_oct "oct0"
+Info: dll0: "sdram" instantiated altera_mem_if_dll "dll0"
+Info: ng0: "c0" instantiated altera_mem_if_nextgen_ddr3_controller_core "ng0"
+Info: a0: "c0" instantiated alt_mem_ddrx_mm_st_converter "a0"
+Info: dma_mem: Done "dma_mem" with 11 modules, 139 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

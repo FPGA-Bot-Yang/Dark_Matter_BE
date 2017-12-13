@@ -1,0 +1,1261 @@
+Info: Starting: Create testbench Qsys system
+Info: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/dma_mem.ipx
+Info: ip-generate --project-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation --output-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation --report-file=sopcinfo:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem.sopcinfo --report-file=html:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\testbench\dma_mem.html --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem.qsys --remove-qsys-generate-warning
+Progress: Loading Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_mem.qsys
+Progress: Reading input file
+Progress: Adding Avalon_master [master_template 1.0]
+Progress: Parameterizing module Avalon_master
+Progress: Adding Avalon_slave [slave_template 2.0]
+Progress: Parameterizing module Avalon_slave
+Progress: Adding clk_125 [clock_source 14.1]
+Progress: Parameterizing module clk_125
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding cpu [altera_nios2_gen2 14.1]
+Progress: Parameterizing module cpu
+Progress: Adding cpu_memory [altera_avalon_onchip_memory2 14.1]
+Progress: Parameterizing module cpu_memory
+Progress: Adding dma [altera_avalon_dma 14.1]
+Progress: Parameterizing module dma
+Progress: Adding jtag [altera_avalon_jtag_uart 14.1]
+Progress: Parameterizing module jtag
+Progress: Adding mm_traffic_generator [altera_avalon_mm_traffic_generator 14.1]
+Progress: Parameterizing module mm_traffic_generator
+Progress: Adding sdram [altera_mem_if_ddr3_emif 14.1]
+Progress: Parameterizing module sdram
+Progress: Adding sysid [altera_avalon_sysid_qsys 14.1]
+Progress: Parameterizing module sysid
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: dma_mem.sdram: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
+Warning: dma_mem.sdram.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
+Warning: dma_mem.sdram: sdram.status must be exported, or connected to a matching conduit.
+Warning: dma_mem.sdram: sdram.pll_sharing must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Loading IP catalog for testbench.
+Progress: 
+Progress: 
+Progress: 
+Progress: (1) searching D:/Program_Files/altera/14.1/quartus/sopc_builder/bin/root_components.ipx (ipx file)
+Info: Reading index D:\Program_Files\altera\14.1\quartus\sopc_builder\bin\root_components.ipx
+Info: D:\Program_Files\altera\14.1\quartus\sopc_builder\bin\root_components.ipx: Loading now from components.ipx
+Info: Reading index D:\Program_Files\altera\14.1\quartus\sopc_builder\bin\ip_component_categories.ipx
+Info: D:\Program_Files\altera\14.1\quartus\sopc_builder\bin\ip_component_categories.ipx described 0 plugins, 0 paths, in 0.01 seconds
+Info: D:/Program_Files/altera/14.1/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0.01 seconds
+Info: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ip/**/* matched 0 files in 0.00 seconds
+Info: Reading index E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\testbench\dma_mem.ipx
+Progress: Loading Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_mem.qsys
+Info: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/* matched 85 files in 0.00 seconds
+Progress: Loading Master_Template/custom_masters_hw.tcl
+Progress: Loading Slave_Template/slave_template_hw.tcl
+Info: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/ip/**/* matched 14 files in 0.03 seconds
+Info: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/*/* matched 1089 files in 0.03 seconds
+Info: E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\testbench\dma_mem.ipx described 0 plugins, 3 paths, in 0.06 seconds
+Info: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/* matched 4 files in 0.06 seconds
+Info: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/*/* matched 0 files in 0.00 seconds
+Info: C:/Users/Ethan/.altera.quartus/ip/14.1/**/* matched 0 files in 0.00 seconds
+Info: Reading index D:\Program_Files\altera\14.1\ip\altera\altera_components.ipx
+Info: D:\Program_Files\altera\14.1\ip\altera\altera_components.ipx described 1350 plugins, 0 paths, in 0.14 seconds
+Info: D:/Program_Files/altera/14.1/ip/**/* matched 129 files in 0.14 seconds
+Info: Reading index D:\Program_Files\altera\14.1\quartus\sopc_builder\builtin.ipx
+Info: D:\Program_Files\altera\14.1\quartus\sopc_builder\builtin.ipx described 81 plugins, 0 paths, in 0.01 seconds
+Info: D:/Program_Files/altera/14.1/quartus/sopc_builder/**/* matched 8 files in 0.01 seconds
+Info: Reading index D:\Program_Files\altera\14.1\quartus\common\librarian\factories\index.ipx
+Info: D:\Program_Files\altera\14.1\quartus\common\librarian\factories\index.ipx described 151 plugins, 0 paths, in 0.01 seconds
+Info: D:/Program_Files/altera/14.1/quartus/common/librarian/factories/**/* matched 4 files in 0.01 seconds
+Info: D:/Program_Files/altera/14.1/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0.00 seconds
+Info: D:\Program_Files\altera\14.1\quartus\sopc_builder\bin\root_components.ipx described 0 plugins, 9 paths, in 0.23 seconds
+Info: D:/Program_Files/altera/14.1/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0.23 seconds
+Progress: 
+Progress: 
+Progress: 
+Info: Running script D:/Program_Files/altera/14.1/quartus/sopc_builder/bin/tbgen.tcl
+Info: send_message Info TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: get_module_property NAME
+Info: send_message Info TB_Gen: System design is: dma_mem
+Info: TB_Gen: System design is: dma_mem
+Info: get_interfaces 
+Info: get_connections 
+Info: get_interface_property clk_125_clk_in EXPORT_OF
+Info: get_instance_property clk_125 CLASS_NAME
+Info: get_instance_assignment clk_125 testbench.partner.map.clk_in
+Info: get_interface_property clk_125_clk_in_reset EXPORT_OF
+Info: get_instance_property clk_125 CLASS_NAME
+Info: get_instance_assignment clk_125 testbench.partner.map.clk_in_reset
+Info: get_interface_property ddr3_top_memory EXPORT_OF
+Info: get_instance_property sdram CLASS_NAME
+Info: get_instance_assignment sdram testbench.partner.map.memory
+Info: get_instance_assignment sdram testbench.partner.map.memory
+Info: get_instance_assignment sdram testbench.partner.map.memory
+Info: get_instance_assignment sdram testbench.partner.mem_model.class
+Info: get_instance_assignment sdram testbench.partner.mem_model.version
+Info: get_instance_assignments sdram
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_PARITY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR0
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR0_CALIB
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR0_DLL_RESET
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR0_DLL_RESET_MIRR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR0_MIRR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR1
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR1_CALIB
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR1_MIRR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR1_OCD_ENABLE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR2
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR2_MIRR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR3
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AC_ROM_MR3_MIRR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.ADDR_CMD_DDR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.ADDR_RATE_RATIO
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_ADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_BANKADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_CLK_EN_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_CLK_PAIR_COUNT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_CONTROL_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_CS_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_DM_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_DQ_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_ODT_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_RATE_RATIO
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_RLAT_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_RRANK_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_WLAT_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_WRANK_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AFI_WRITE_DQS_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.ALTMEMPHY_COMPATIBLE_MODE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AP_MODE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.AP_MODE_EN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CFG_TCCD
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CFG_TCCD_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CTL_RD_TO_PCH_EXTRA_CLK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CTL_RD_TO_RD_DIFF_CHIP_EXTRA_CLK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CTL_RD_TO_RD_EXTRA_CLK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CTL_WR_TO_WR_DIFF_CHIP_EXTRA_CLK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CTL_WR_TO_WR_EXTRA_CLK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.CUT_NEW_FAMILY_TIMING
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DATA_RATE_RATIO
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DAT_DATA_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DEVICE_DEPTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DEVICE_FAMILY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DEVICE_FAMILY_PARAM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DEVICE_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DISABLE_CHILD_MESSAGING
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DISCRETE_FLY_BY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DQ_DDR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.DUPLICATE_AC
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.FLY_BY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.FORCE_DQS_TRACKING
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.FORCE_SHADOW_REGS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.HARD_EMIF
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.HARD_PHY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.HHP_HPS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.HHP_HPS_SIMULATION
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.HHP_HPS_VERIFICATION
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.HPS_PROTOCOL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.IS_ES_DEVICE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.LRDIMM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.LRDIMM_EXTENDED_CONFIG
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.LRDIMM_INT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_ASR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_ATCL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_ATCL_INT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_AUTO_LEVELING_MODE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_BANKADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_BL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_BT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_BURST_LENGTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CK_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CLK_EN_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CLK_FREQ
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CLK_FREQ_MAX
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CLK_MAX_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CLK_MAX_PS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CLK_TO_DQS_CAPTURE_DELAY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_COL_ADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_CS_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_DLL_EN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_DQS_TO_CLK_CAPTURE_DELAY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_DQ_PER_DQS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_DQ_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_DRV_STR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_FORMAT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_GUARANTEED_WRITE_INIT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_ADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_ADDR_WIDTH_MIN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_BANKADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_BOARD_BASE_DELAY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CHIP_BITS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CK_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CLK_EN_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CLK_PAIR_COUNT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_COL_ADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CONTROL_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CS_PER_DIMM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CS_PER_RANK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_CS_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_DM_PINS_EN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_DM_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_DQSN_EN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_DQS_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_DQ_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_LRDIMM_RM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_NUMBER_OF_RANKS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_ODT_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_RD_TO_WR_TURNAROUND_OCT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_READ_DQS_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_ROW_ADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_SIM_VALID_WINDOW
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_WRITE_DQS_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_IF_WR_TO_RD_TURNAROUND_OCT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_INIT_EN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_INIT_FILE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_LEVELING
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_LRDIMM_ENABLED
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_MIRROR_ADDRESSING
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_MIRROR_ADDRESSING_DEC
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_NUMBER_OF_DIMMS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_NUMBER_OF_RANKS_PER_DEVICE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_NUMBER_OF_RANKS_PER_DIMM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_PD
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_RANK_MULTIPLICATION_FACTOR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_REGDIMM_ENABLED
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_ROW_ADDR_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_RTT_NOM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_RTT_WR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_SRT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TCL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TDQSCK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TFAW
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TFAW_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TINIT_CK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TINIT_US
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TMRD_CK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRAS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRAS_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRC
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRCD
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRCD_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TREFI
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TREFI_US
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRFC
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRFC_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRP
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRP_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRRD
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRRD_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRTP
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TRTP_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TWR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TWR_NS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TWTR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_TYPE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_USER_LEVELING_MODE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_VENDOR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_VERBOSE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_WTCL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MEM_WTCL_INT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR0_BL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR0_BT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR0_CAS_LATENCY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR0_DLL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR0_PD
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR0_WR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_AL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_DLL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_DQS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_ODS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_QOFF
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_RDQS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_RTT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_TDQS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR1_WL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR2_ASR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR2_CWL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR2_RTT_WR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR2_SRF
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR2_SRT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR3_MPR
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR3_MPR_AA
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MR3_MPR_RF
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.MRS_MIRROR_PING_PONG_ATSO
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.NEXTGEN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.PARSE_FRIENDLY_DEVICE_FAMILY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.PARSE_FRIENDLY_DEVICE_FAMILY_CACHE_VALID
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.PARSE_FRIENDLY_DEVICE_FAMILY_PARAM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.PARSE_FRIENDLY_DEVICE_FAMILY_PARAM_VALID
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.PINGPONGPHY_EN
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.PRE_V_SERIES_FAMILY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.RATE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.RDIMM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.RDIMM_CONFIG
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.RDIMM_INT
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.REFRESH_BURST_VALIDATION
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.SCC_DATA_WIDTH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.SPEED_GRADE
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.SYS_INFO_DEVICE_FAMILY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDQSCK
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDQSCKDL
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDQSCKDM
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDQSCKDS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDQSQ
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDQSS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDSH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TDSS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TIH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TIS
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TQH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TIMING_TQSH
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.TRK_PARALLEL_SCC_LOAD
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.USE_DQS_TRACKING
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.USE_HPS_DQS_TRACKING
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.USE_MEM_CLK_FREQ
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.USE_NEG_EDGE_AC_TRANSFER_FOR_HPHY
+Info: get_instance_assignment sdram testbench.partner.mem_model.parameter.USE_SHADOW_REGS
+Info: send_message Info TB_Gen: Interface 'ddr3_top_memory' partner_name: 'sdram_mem_model'
+Info: TB_Gen: Interface 'ddr3_top_memory' partner_name: 'sdram_mem_model'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' ddr3_top_memory.partner_intf: 'memory'
+Info: TB_Gen: Interface 'sdram_mem_model' ddr3_top_memory.partner_intf: 'memory'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_class: 'altera_mem_if_ddr3_mem_model'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_class: 'altera_mem_if_ddr3_mem_model'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_version: ''
+Info: TB_Gen: Interface 'sdram_mem_model' partner_version: ''
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_PARITY: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_PARITY: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0: '0001000100001'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0: '0001000100001'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_CALIB: ''
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_CALIB: ''
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_DLL_RESET: '0001100100000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_DLL_RESET: '0001100100000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_DLL_RESET_MIRR: '0001011000000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_DLL_RESET_MIRR: '0001011000000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_MIRR: '0001001000001'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR0_MIRR: '0001001000001'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1: '0000000000100'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1: '0000000000100'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1_CALIB: ''
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1_CALIB: ''
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1_MIRR: '0000000000100'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1_MIRR: '0000000000100'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1_OCD_ENABLE: ''
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR1_OCD_ENABLE: ''
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR2: '0000000000000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR2: '0000000000000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR2_MIRR: '0000000000000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR2_MIRR: '0000000000000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR3: '0000000000000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR3: '0000000000000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR3_MIRR: '0000000000000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AC_ROM_MR3_MIRR: '0000000000000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.ADDR_CMD_DDR: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.ADDR_CMD_DDR: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.ADDR_RATE_RATIO: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.ADDR_RATE_RATIO: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_ADDR_WIDTH: '28'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_ADDR_WIDTH: '28'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_BANKADDR_WIDTH: '6'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_BANKADDR_WIDTH: '6'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CLK_EN_WIDTH: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CLK_EN_WIDTH: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CLK_PAIR_COUNT: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CLK_PAIR_COUNT: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CONTROL_WIDTH: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CONTROL_WIDTH: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CS_WIDTH: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_CS_WIDTH: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_DM_WIDTH: '32'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_DM_WIDTH: '32'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_DQ_WIDTH: '256'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_DQ_WIDTH: '256'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_ODT_WIDTH: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_ODT_WIDTH: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_RATE_RATIO: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_RATE_RATIO: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_RLAT_WIDTH: '6'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_RLAT_WIDTH: '6'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_RRANK_WIDTH: '16'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_RRANK_WIDTH: '16'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_WLAT_WIDTH: '6'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_WLAT_WIDTH: '6'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_WRANK_WIDTH: '16'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_WRANK_WIDTH: '16'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_WRITE_DQS_WIDTH: '16'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AFI_WRITE_DQS_WIDTH: '16'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.ALTMEMPHY_COMPATIBLE_MODE: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.ALTMEMPHY_COMPATIBLE_MODE: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AP_MODE: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AP_MODE: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.AP_MODE_EN: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.AP_MODE_EN: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CFG_TCCD: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CFG_TCCD: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CFG_TCCD_NS: '2.5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CFG_TCCD_NS: '2.5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_RD_TO_PCH_EXTRA_CLK: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_RD_TO_PCH_EXTRA_CLK: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_RD_TO_RD_DIFF_CHIP_EXTRA_CLK: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_RD_TO_RD_DIFF_CHIP_EXTRA_CLK: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_RD_TO_RD_EXTRA_CLK: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_RD_TO_RD_EXTRA_CLK: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_WR_TO_WR_DIFF_CHIP_EXTRA_CLK: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_WR_TO_WR_DIFF_CHIP_EXTRA_CLK: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_WR_TO_WR_EXTRA_CLK: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CTL_WR_TO_WR_EXTRA_CLK: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.CUT_NEW_FAMILY_TIMING: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.CUT_NEW_FAMILY_TIMING: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DATA_RATE_RATIO: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DATA_RATE_RATIO: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DAT_DATA_WIDTH: '32'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DAT_DATA_WIDTH: '32'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_DEPTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_DEPTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_FAMILY: 'Cyclone V'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_FAMILY: 'Cyclone V'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_FAMILY_PARAM: ''
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_FAMILY_PARAM: ''
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DEVICE_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DISABLE_CHILD_MESSAGING: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DISABLE_CHILD_MESSAGING: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DISCRETE_FLY_BY: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DISCRETE_FLY_BY: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DQ_DDR: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DQ_DDR: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.DUPLICATE_AC: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.DUPLICATE_AC: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.FLY_BY: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.FLY_BY: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.FORCE_DQS_TRACKING: 'AUTO'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.FORCE_DQS_TRACKING: 'AUTO'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.FORCE_SHADOW_REGS: 'AUTO'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.FORCE_SHADOW_REGS: 'AUTO'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.HARD_EMIF: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.HARD_EMIF: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.HARD_PHY: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.HARD_PHY: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.HHP_HPS: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.HHP_HPS: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.HHP_HPS_SIMULATION: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.HHP_HPS_SIMULATION: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.HHP_HPS_VERIFICATION: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.HHP_HPS_VERIFICATION: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.HPS_PROTOCOL: 'DEFAULT'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.HPS_PROTOCOL: 'DEFAULT'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.IS_ES_DEVICE: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.IS_ES_DEVICE: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.LRDIMM: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.LRDIMM: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.LRDIMM_EXTENDED_CONFIG: '0x000000000000000000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.LRDIMM_EXTENDED_CONFIG: '0x000000000000000000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.LRDIMM_INT: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.LRDIMM_INT: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ASR: 'Manual'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ASR: 'Manual'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ATCL: 'Disabled'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ATCL: 'Disabled'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ATCL_INT: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ATCL_INT: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_AUTO_LEVELING_MODE: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_AUTO_LEVELING_MODE: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BANKADDR_WIDTH: '3'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BANKADDR_WIDTH: '3'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BL: 'OTF'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BL: 'OTF'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BT: 'Sequential'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BT: 'Sequential'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BURST_LENGTH: '8'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_BURST_LENGTH: '8'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CK_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CK_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_EN_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_EN_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_FREQ: '300.0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_FREQ: '300.0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_FREQ_MAX: '533.333'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_FREQ_MAX: '533.333'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_MAX_NS: '1.875'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_MAX_NS: '1.875'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_MAX_PS: '1875.0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_MAX_PS: '1875.0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_TO_DQS_CAPTURE_DELAY: '100000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CLK_TO_DQS_CAPTURE_DELAY: '100000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_COL_ADDR_WIDTH: '10'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_COL_ADDR_WIDTH: '10'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CS_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_CS_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DLL_EN: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DLL_EN: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DQS_TO_CLK_CAPTURE_DELAY: '450'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DQS_TO_CLK_CAPTURE_DELAY: '450'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DQ_PER_DQS: '8'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DQ_PER_DQS: '8'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DQ_WIDTH: '64'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DQ_WIDTH: '64'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DRV_STR: 'RZQ/6'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_DRV_STR: 'RZQ/6'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_FORMAT: 'DISCRETE'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_FORMAT: 'DISCRETE'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_GUARANTEED_WRITE_INIT: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_GUARANTEED_WRITE_INIT: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ADDR_WIDTH: '14'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ADDR_WIDTH: '14'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ADDR_WIDTH_MIN: '13'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ADDR_WIDTH_MIN: '13'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_BANKADDR_WIDTH: '3'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_BANKADDR_WIDTH: '3'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_BOARD_BASE_DELAY: '10'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_BOARD_BASE_DELAY: '10'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CHIP_BITS: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CHIP_BITS: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CK_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CK_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CLK_EN_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CLK_EN_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CLK_PAIR_COUNT: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CLK_PAIR_COUNT: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_COL_ADDR_WIDTH: '10'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_COL_ADDR_WIDTH: '10'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CONTROL_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CONTROL_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CS_PER_DIMM: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CS_PER_DIMM: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CS_PER_RANK: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CS_PER_RANK: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CS_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_CS_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DM_PINS_EN: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DM_PINS_EN: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DM_WIDTH: '8'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DM_WIDTH: '8'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DQSN_EN: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DQSN_EN: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DQS_WIDTH: '8'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DQS_WIDTH: '8'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DQ_WIDTH: '64'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_DQ_WIDTH: '64'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_LRDIMM_RM: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_LRDIMM_RM: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_NUMBER_OF_RANKS: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_NUMBER_OF_RANKS: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ODT_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ODT_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_RD_TO_WR_TURNAROUND_OCT: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_RD_TO_WR_TURNAROUND_OCT: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_READ_DQS_WIDTH: '8'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_READ_DQS_WIDTH: '8'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ROW_ADDR_WIDTH: '14'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_ROW_ADDR_WIDTH: '14'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_SIM_VALID_WINDOW: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_SIM_VALID_WINDOW: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_WRITE_DQS_WIDTH: '8'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_WRITE_DQS_WIDTH: '8'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_WR_TO_RD_TURNAROUND_OCT: '3'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_IF_WR_TO_RD_TURNAROUND_OCT: '3'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_INIT_EN: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_INIT_EN: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_INIT_FILE: ''
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_INIT_FILE: ''
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_LEVELING: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_LEVELING: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_LRDIMM_ENABLED: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_LRDIMM_ENABLED: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_MIRROR_ADDRESSING: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_MIRROR_ADDRESSING: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_MIRROR_ADDRESSING_DEC: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_MIRROR_ADDRESSING_DEC: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_NUMBER_OF_DIMMS: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_NUMBER_OF_DIMMS: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_NUMBER_OF_RANKS_PER_DEVICE: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_NUMBER_OF_RANKS_PER_DEVICE: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_NUMBER_OF_RANKS_PER_DIMM: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_NUMBER_OF_RANKS_PER_DIMM: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_PD: 'DLL off'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_PD: 'DLL off'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_RANK_MULTIPLICATION_FACTOR: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_RANK_MULTIPLICATION_FACTOR: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_REGDIMM_ENABLED: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_REGDIMM_ENABLED: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ROW_ADDR_WIDTH: '14'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_ROW_ADDR_WIDTH: '14'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_RTT_NOM: 'RZQ/4'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_RTT_NOM: 'RZQ/4'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_RTT_WR: 'Dynamic ODT off'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_RTT_WR: 'Dynamic ODT off'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_SRT: 'Normal'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_SRT: 'Normal'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TCL: '6'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TCL: '6'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TDQSCK: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TDQSCK: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TFAW: '14'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TFAW: '14'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TFAW_NS: '45.0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TFAW_NS: '45.0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TINIT_CK: '150000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TINIT_CK: '150000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TINIT_US: '500'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TINIT_US: '500'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TMRD_CK: '4'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TMRD_CK: '4'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRAS: '11'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRAS: '11'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRAS_NS: '36.0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRAS_NS: '36.0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRC: '15'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRC: '15'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRCD: '5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRCD: '5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRCD_NS: '13.5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRCD_NS: '13.5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TREFI: '2341'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TREFI: '2341'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TREFI_US: '7.8'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TREFI_US: '7.8'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRFC: '49'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRFC: '49'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRFC_NS: '160.0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRFC_NS: '160.0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRP: '5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRP: '5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRP_NS: '13.5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRP_NS: '13.5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRRD: '3'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRRD: '3'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRRD_NS: '7.5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRRD_NS: '7.5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRTP: '3'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRTP: '3'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRTP_NS: '7.5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TRTP_NS: '7.5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TWR: '5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TWR: '5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TWR_NS: '15.0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TWR_NS: '15.0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TWTR: '5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TWTR: '5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TYPE: 'DDR3'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_TYPE: 'DDR3'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_USER_LEVELING_MODE: 'Leveling'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_USER_LEVELING_MODE: 'Leveling'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_VENDOR: 'Micron'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_VENDOR: 'Micron'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_VERBOSE: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_VERBOSE: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_WTCL: '5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_WTCL: '5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_WTCL_INT: '5'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MEM_WTCL_INT: '5'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_BL: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_BL: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_BT: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_BT: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_CAS_LATENCY: '2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_CAS_LATENCY: '2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_DLL: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_DLL: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_PD: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_PD: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_WR: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR0_WR: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_AL: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_AL: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_DLL: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_DLL: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_DQS: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_DQS: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_ODS: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_ODS: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_QOFF: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_QOFF: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_RDQS: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_RDQS: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_RTT: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_RTT: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_TDQS: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_TDQS: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_WL: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR1_WL: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_ASR: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_ASR: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_CWL: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_CWL: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_RTT_WR: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_RTT_WR: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_SRF: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_SRF: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_SRT: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR2_SRT: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR3_MPR: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR3_MPR: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR3_MPR_AA: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR3_MPR_AA: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MR3_MPR_RF: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MR3_MPR_RF: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.MRS_MIRROR_PING_PONG_ATSO: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.MRS_MIRROR_PING_PONG_ATSO: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.NEXTGEN: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.NEXTGEN: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY: 'CYCLONEV'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY: 'CYCLONEV'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY_CACHE_VALID: 'true'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY_CACHE_VALID: 'true'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY_PARAM: ''
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY_PARAM: ''
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY_PARAM_VALID: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.PARSE_FRIENDLY_DEVICE_FAMILY_PARAM_VALID: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.PINGPONGPHY_EN: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.PINGPONGPHY_EN: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.PRE_V_SERIES_FAMILY: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.PRE_V_SERIES_FAMILY: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.RATE: 'Half'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.RATE: 'Half'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.RDIMM: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.RDIMM: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.RDIMM_CONFIG: '0000000000000000'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.RDIMM_CONFIG: '0000000000000000'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.RDIMM_INT: '0'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.RDIMM_INT: '0'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.REFRESH_BURST_VALIDATION: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.REFRESH_BURST_VALIDATION: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.SCC_DATA_WIDTH: '1'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.SCC_DATA_WIDTH: '1'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.SPEED_GRADE: '7'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.SPEED_GRADE: '7'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.SYS_INFO_DEVICE_FAMILY: 'Cyclone V'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.SYS_INFO_DEVICE_FAMILY: 'Cyclone V'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDH: '65'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDH: '65'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCK: '255'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCK: '255'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCKDL: '1200'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCKDL: '1200'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCKDM: '900'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCKDM: '900'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCKDS: '450'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSCKDS: '450'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSQ: '125'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSQ: '125'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSS: '0.25'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDQSS: '0.25'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDS: '30'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDS: '30'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDSH: '0.2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDSH: '0.2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDSS: '0.2'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TDSS: '0.2'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TIH: '140'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TIH: '140'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TIS: '190'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TIS: '190'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TQH: '0.38'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TQH: '0.38'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TQSH: '0.4'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TIMING_TQSH: '0.4'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.TRK_PARALLEL_SCC_LOAD: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.TRK_PARALLEL_SCC_LOAD: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.USE_DQS_TRACKING: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.USE_DQS_TRACKING: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.USE_HPS_DQS_TRACKING: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.USE_HPS_DQS_TRACKING: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.USE_MEM_CLK_FREQ: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.USE_MEM_CLK_FREQ: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.USE_NEG_EDGE_AC_TRANSFER_FOR_HPHY: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.USE_NEG_EDGE_AC_TRANSFER_FOR_HPHY: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_param.USE_SHADOW_REGS: 'false'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_param.USE_SHADOW_REGS: 'false'
+Info: send_message Info TB_Gen: Interface 'sdram_mem_model' partner_params: 'AC_PARITY AC_ROM_MR0 AC_ROM_MR0_CALIB AC_ROM_MR0_DLL_RESET AC_ROM_MR0_DLL_RESET_MIRR AC_ROM_MR0_MIRR AC_ROM_MR1 AC_ROM_MR1_CALIB AC_ROM_MR1_MIRR AC_ROM_MR1_OCD_ENABLE AC_ROM_MR2 AC_ROM_MR2_MIRR AC_ROM_MR3 AC_ROM_MR3_MIRR ADDR_CMD_DDR ADDR_RATE_RATIO AFI_ADDR_WIDTH AFI_BANKADDR_WIDTH AFI_CLK_EN_WIDTH AFI_CLK_PAIR_COUNT AFI_CONTROL_WIDTH AFI_CS_WIDTH AFI_DM_WIDTH AFI_DQ_WIDTH AFI_ODT_WIDTH AFI_RATE_RATIO AFI_RLAT_WIDTH AFI_RRANK_WIDTH AFI_WLAT_WIDTH AFI_WRANK_WIDTH AFI_WRITE_DQS_WIDTH ALTMEMPHY_COMPATIBLE_MODE AP_MODE AP_MODE_EN CFG_TCCD CFG_TCCD_NS CTL_RD_TO_PCH_EXTRA_CLK CTL_RD_TO_RD_DIFF_CHIP_EXTRA_CLK CTL_RD_TO_RD_EXTRA_CLK CTL_WR_TO_WR_DIFF_CHIP_EXTRA_CLK CTL_WR_TO_WR_EXTRA_CLK CUT_NEW_FAMILY_TIMING DATA_RATE_RATIO DAT_DATA_WIDTH DEVICE_DEPTH DEVICE_FAMILY DEVICE_FAMILY_PARAM DEVICE_WIDTH DISABLE_CHILD_MESSAGING DISCRETE_FLY_BY DQ_DDR DUPLICATE_AC FLY_BY FORCE_DQS_TRACKING FORCE_SHADOW_REGS HARD_EMIF HARD_PHY HHP_HPS HHP_HPS_SIMULATION HHP_HPS_VERIFICATION HPS_PROTOCOL IS_ES_DEVICE LRDIMM LRDIMM_EXTENDED_CONFIG LRDIMM_INT MEM_ASR MEM_ATCL MEM_ATCL_INT MEM_AUTO_LEVELING_MODE MEM_BANKADDR_WIDTH MEM_BL MEM_BT MEM_BURST_LENGTH MEM_CK_WIDTH MEM_CLK_EN_WIDTH MEM_CLK_FREQ MEM_CLK_FREQ_MAX MEM_CLK_MAX_NS MEM_CLK_MAX_PS MEM_CLK_TO_DQS_CAPTURE_DELAY MEM_COL_ADDR_WIDTH MEM_CS_WIDTH MEM_DLL_EN MEM_DQS_TO_CLK_CAPTURE_DELAY MEM_DQ_PER_DQS MEM_DQ_WIDTH MEM_DRV_STR MEM_FORMAT MEM_GUARANTEED_WRITE_INIT MEM_IF_ADDR_WIDTH MEM_IF_ADDR_WIDTH_MIN MEM_IF_BANKADDR_WIDTH MEM_IF_BOARD_BASE_DELAY MEM_IF_CHIP_BITS MEM_IF_CK_WIDTH MEM_IF_CLK_EN_WIDTH MEM_IF_CLK_PAIR_COUNT MEM_IF_COL_ADDR_WIDTH MEM_IF_CONTROL_WIDTH MEM_IF_CS_PER_DIMM MEM_IF_CS_PER_RANK MEM_IF_CS_WIDTH MEM_IF_DM_PINS_EN MEM_IF_DM_WIDTH MEM_IF_DQSN_EN MEM_IF_DQS_WIDTH MEM_IF_DQ_WIDTH MEM_IF_LRDIMM_RM MEM_IF_NUMBER_OF_RANKS MEM_IF_ODT_WIDTH MEM_IF_RD_TO_WR_TURNAROUND_OCT MEM_IF_READ_DQS_WIDTH MEM_IF_ROW_ADDR_WIDTH MEM_IF_SIM_VALID_WINDOW MEM_IF_WRITE_DQS_WIDTH MEM_IF_WR_TO_RD_TURNAROUND_OCT MEM_INIT_EN MEM_INIT_FILE MEM_LEVELING MEM_LRDIMM_ENABLED MEM_MIRROR_ADDRESSING MEM_MIRROR_ADDRESSING_DEC MEM_NUMBER_OF_DIMMS MEM_NUMBER_OF_RANKS_PER_DEVICE MEM_NUMBER_OF_RANKS_PER_DIMM MEM_PD MEM_RANK_MULTIPLICATION_FACTOR MEM_REGDIMM_ENABLED MEM_ROW_ADDR_WIDTH MEM_RTT_NOM MEM_RTT_WR MEM_SRT MEM_TCL MEM_TDQSCK MEM_TFAW MEM_TFAW_NS MEM_TINIT_CK MEM_TINIT_US MEM_TMRD_CK MEM_TRAS MEM_TRAS_NS MEM_TRC MEM_TRCD MEM_TRCD_NS MEM_TREFI MEM_TREFI_US MEM_TRFC MEM_TRFC_NS MEM_TRP MEM_TRP_NS MEM_TRRD MEM_TRRD_NS MEM_TRTP MEM_TRTP_NS MEM_TWR MEM_TWR_NS MEM_TWTR MEM_TYPE MEM_USER_LEVELING_MODE MEM_VENDOR MEM_VERBOSE MEM_WTCL MEM_WTCL_INT MR0_BL MR0_BT MR0_CAS_LATENCY MR0_DLL MR0_PD MR0_WR MR1_AL MR1_DLL MR1_DQS MR1_ODS MR1_QOFF MR1_RDQS MR1_RTT MR1_TDQS MR1_WL MR2_ASR MR2_CWL MR2_RTT_WR MR2_SRF MR2_SRT MR3_MPR MR3_MPR_AA MR3_MPR_RF MRS_MIRROR_PING_PONG_ATSO NEXTGEN PARSE_FRIENDLY_DEVICE_FAMILY PARSE_FRIENDLY_DEVICE_FAMILY_CACHE_VALID PARSE_FRIENDLY_DEVICE_FAMILY_PARAM PARSE_FRIENDLY_DEVICE_FAMILY_PARAM_VALID PINGPONGPHY_EN PRE_V_SERIES_FAMILY RATE RDIMM RDIMM_CONFIG RDIMM_INT REFRESH_BURST_VALIDATION SCC_DATA_WIDTH SPEED_GRADE SYS_INFO_DEVICE_FAMILY TIMING_TDH TIMING_TDQSCK TIMING_TDQSCKDL TIMING_TDQSCKDM TIMING_TDQSCKDS TIMING_TDQSQ TIMING_TDQSS TIMING_TDS TIMING_TDSH TIMING_TDSS TIMING_TIH TIMING_TIS TIMING_TQH TIMING_TQSH TRK_PARALLEL_SCC_LOAD USE_DQS_TRACKING USE_HPS_DQS_TRACKING USE_MEM_CLK_FREQ USE_NEG_EDGE_AC_TRANSFER_FOR_HPHY USE_SHADOW_REGS'
+Info: TB_Gen: Interface 'sdram_mem_model' partner_params: 'AC_PARITY AC_ROM_MR0 AC_ROM_MR0_CALIB AC_ROM_MR0_DLL_RESET AC_ROM_MR0_DLL_RESET_MIRR AC_ROM_MR0_MIRR AC_ROM_MR1 AC_ROM_MR1_CALIB AC_ROM_MR1_MIRR AC_ROM_MR1_OCD_ENABLE AC_ROM_MR2 AC_ROM_MR2_MIRR AC_ROM_MR3 AC_ROM_MR3_MIRR ADDR_CMD_DDR ADDR_RATE_RATIO AFI_ADDR_WIDTH AFI_BANKADDR_WIDTH AFI_CLK_EN_WIDTH AFI_CLK_PAIR_COUNT AFI_CONTROL_WIDTH AFI_CS_WIDTH AFI_DM_WIDTH AFI_DQ_WIDTH AFI_ODT_WIDTH AFI_RATE_RATIO AFI_RLAT_WIDTH AFI_RRANK_WIDTH AFI_WLAT_WIDTH AFI_WRANK_WIDTH AFI_WRITE_DQS_WIDTH ALTMEMPHY_COMPATIBLE_MODE AP_MODE AP_MODE_EN CFG_TCCD CFG_TCCD_NS CTL_RD_TO_PCH_EXTRA_CLK CTL_RD_TO_RD_DIFF_CHIP_EXTRA_CLK CTL_RD_TO_RD_EXTRA_CLK CTL_WR_TO_WR_DIFF_CHIP_EXTRA_CLK CTL_WR_TO_WR_EXTRA_CLK CUT_NEW_FAMILY_TIMING DATA_RATE_RATIO DAT_DATA_WIDTH DEVICE_DEPTH DEVICE_FAMILY DEVICE_FAMILY_PARAM DEVICE_WIDTH DISABLE_CHILD_MESSAGING DISCRETE_FLY_BY DQ_DDR DUPLICATE_AC FLY_BY FORCE_DQS_TRACKING FORCE_SHADOW_REGS HARD_EMIF HARD_PHY HHP_HPS HHP_HPS_SIMULATION HHP_HPS_VERIFICATION HPS_PROTOCOL IS_ES_DEVICE LRDIMM LRDIMM_EXTENDED_CONFIG LRDIMM_INT MEM_ASR MEM_ATCL MEM_ATCL_INT MEM_AUTO_LEVELING_MODE MEM_BANKADDR_WIDTH MEM_BL MEM_BT MEM_BURST_LENGTH MEM_CK_WIDTH MEM_CLK_EN_WIDTH MEM_CLK_FREQ MEM_CLK_FREQ_MAX MEM_CLK_MAX_NS MEM_CLK_MAX_PS MEM_CLK_TO_DQS_CAPTURE_DELAY MEM_COL_ADDR_WIDTH MEM_CS_WIDTH MEM_DLL_EN MEM_DQS_TO_CLK_CAPTURE_DELAY MEM_DQ_PER_DQS MEM_DQ_WIDTH MEM_DRV_STR MEM_FORMAT MEM_GUARANTEED_WRITE_INIT MEM_IF_ADDR_WIDTH MEM_IF_ADDR_WIDTH_MIN MEM_IF_BANKADDR_WIDTH MEM_IF_BOARD_BASE_DELAY MEM_IF_CHIP_BITS MEM_IF_CK_WIDTH MEM_IF_CLK_EN_WIDTH MEM_IF_CLK_PAIR_COUNT MEM_IF_COL_ADDR_WIDTH MEM_IF_CONTROL_WIDTH MEM_IF_CS_PER_DIMM MEM_IF_CS_PER_RANK MEM_IF_CS_WIDTH MEM_IF_DM_PINS_EN MEM_IF_DM_WIDTH MEM_IF_DQSN_EN MEM_IF_DQS_WIDTH MEM_IF_DQ_WIDTH MEM_IF_LRDIMM_RM MEM_IF_NUMBER_OF_RANKS MEM_IF_ODT_WIDTH MEM_IF_RD_TO_WR_TURNAROUND_OCT MEM_IF_READ_DQS_WIDTH MEM_IF_ROW_ADDR_WIDTH MEM_IF_SIM_VALID_WINDOW MEM_IF_WRITE_DQS_WIDTH MEM_IF_WR_TO_RD_TURNAROUND_OCT MEM_INIT_EN MEM_INIT_FILE MEM_LEVELING MEM_LRDIMM_ENABLED MEM_MIRROR_ADDRESSING MEM_MIRROR_ADDRESSING_DEC MEM_NUMBER_OF_DIMMS MEM_NUMBER_OF_RANKS_PER_DEVICE MEM_NUMBER_OF_RANKS_PER_DIMM MEM_PD MEM_RANK_MULTIPLICATION_FACTOR MEM_REGDIMM_ENABLED MEM_ROW_ADDR_WIDTH MEM_RTT_NOM MEM_RTT_WR MEM_SRT MEM_TCL MEM_TDQSCK MEM_TFAW MEM_TFAW_NS MEM_TINIT_CK MEM_TINIT_US MEM_TMRD_CK MEM_TRAS MEM_TRAS_NS MEM_TRC MEM_TRCD MEM_TRCD_NS MEM_TREFI MEM_TREFI_US MEM_TRFC MEM_TRFC_NS MEM_TRP MEM_TRP_NS MEM_TRRD MEM_TRRD_NS MEM_TRTP MEM_TRTP_NS MEM_TWR MEM_TWR_NS MEM_TWTR MEM_TYPE MEM_USER_LEVELING_MODE MEM_VENDOR MEM_VERBOSE MEM_WTCL MEM_WTCL_INT MR0_BL MR0_BT MR0_CAS_LATENCY MR0_DLL MR0_PD MR0_WR MR1_AL MR1_DLL MR1_DQS MR1_ODS MR1_QOFF MR1_RDQS MR1_RTT MR1_TDQS MR1_WL MR2_ASR MR2_CWL MR2_RTT_WR MR2_SRF MR2_SRT MR3_MPR MR3_MPR_AA MR3_MPR_RF MRS_MIRROR_PING_PONG_ATSO NEXTGEN PARSE_FRIENDLY_DEVICE_FAMILY PARSE_FRIENDLY_DEVICE_FAMILY_CACHE_VALID PARSE_FRIENDLY_DEVICE_FAMILY_PARAM PARSE_FRIENDLY_DEVICE_FAMILY_PARAM_VALID PINGPONGPHY_EN PRE_V_SERIES_FAMILY RATE RDIMM RDIMM_CONFIG RDIMM_INT REFRESH_BURST_VALIDATION SCC_DATA_WIDTH SPEED_GRADE SYS_INFO_DEVICE_FAMILY TIMING_TDH TIMING_TDQSCK TIMING_TDQSCKDL TIMING_TDQSCKDM TIMING_TDQSCKDS TIMING_TDQSQ TIMING_TDQSS TIMING_TDS TIMING_TDSH TIMING_TDSS TIMING_TIH TIMING_TIS TIMING_TQH TIMING_TQSH TRK_PARALLEL_SCC_LOAD USE_DQS_TRACKING USE_HPS_DQS_TRACKING USE_MEM_CLK_FREQ USE_NEG_EDGE_AC_TRANSFER_FOR_HPHY USE_SHADOW_REGS'
+Info: get_instance_assignments sdram
+Info: get_instance_interfaces sdram
+Info: get_instance_property sdram CLASS_NAME
+Info: get_interface_property ddr3_top_oct EXPORT_OF
+Info: get_instance_property sdram CLASS_NAME
+Info: get_instance_assignment sdram testbench.partner.map.oct
+Info: get_interface_property sdram_afi_clk EXPORT_OF
+Info: get_instance_property sdram CLASS_NAME
+Info: get_instance_assignment sdram testbench.partner.map.afi_clk
+Info: get_interface_property sdram_avl EXPORT_OF
+Info: get_instance_property sdram CLASS_NAME
+Info: get_instance_assignment sdram testbench.partner.map.avl
+Info: send_message Info TB_Gen: Creating testbench system : dma_mem_tb with all standard BFMs
+Info: TB_Gen: Creating testbench system : dma_mem_tb with all standard BFMs
+Info: create_system dma_mem_tb
+Info: add_instance dma_mem_inst dma_mem 
+Info: set_use_testbench_naming_pattern true dma_mem
+Info: get_instance_interfaces dma_mem_inst
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in_reset CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst ddr3_top_memory CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst ddr3_top_oct CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst sdram_afi_clk CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst sdram_avl CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in CLASS_NAME
+Info: send_message Info TB_Gen: clock_sink found: clk_125_clk_in
+Info: TB_Gen: clock_sink found: clk_125_clk_in
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in CLASS_NAME
+Info: add_instance dma_mem_inst_clk_125_clk_in_bfm altera_avalon_clock_source 
+Info: get_instance_property dma_mem_inst_clk_125_clk_in_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value dma_mem_inst clk_125_clk_in clockRate
+Info: set_instance_parameter_value dma_mem_inst_clk_125_clk_in_bfm CLOCK_RATE 125000000.0
+Info: set_instance_parameter_value dma_mem_inst_clk_125_clk_in_bfm CLOCK_UNIT 1
+Info: get_instance_property dma_mem_inst_clk_125_clk_in_bfm CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in CLASS_NAME
+Info: get_instance_interfaces dma_mem_inst_clk_125_clk_in_bfm
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_bfm clk CLASS_NAME
+Info: add_connection dma_mem_inst_clk_125_clk_in_bfm.clk dma_mem_inst.clk_125_clk_in
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in_reset CLASS_NAME
+Info: send_message Info TB_Gen: reset_sink found: clk_125_clk_in_reset
+Info: TB_Gen: reset_sink found: clk_125_clk_in_reset
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in_reset CLASS_NAME
+Info: add_instance dma_mem_inst_clk_125_clk_in_reset_bfm altera_avalon_reset_source 
+Info: get_instance_property dma_mem_inst_clk_125_clk_in_reset_bfm CLASS_NAME
+Info: get_instance_interface_ports dma_mem_inst clk_125_clk_in_reset
+Info: get_instance_interface_port_property dma_mem_inst clk_125_clk_in_reset clk_125_clk_in_reset_reset_n ROLE
+Info: get_instance_interface_port_property dma_mem_inst clk_125_clk_in_reset clk_125_clk_in_reset_reset_n ROLE
+Info: set_instance_parameter_value dma_mem_inst_clk_125_clk_in_reset_bfm ASSERT_HIGH_RESET 0
+Info: set_instance_parameter_value dma_mem_inst_clk_125_clk_in_reset_bfm INITIAL_RESET_CYCLES 50
+Info: get_instance_property dma_mem_inst_clk_125_clk_in_reset_bfm CLASS_NAME
+Info: get_instance_interfaces dma_mem_inst_clk_125_clk_in_reset_bfm
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_reset_bfm clk CLASS_NAME
+Info: get_instance_property dma_mem_inst_clk_125_clk_in_reset_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value dma_mem_inst clk_125_clk_in_reset associatedClock
+Info: get_instance_interfaces dma_mem_inst_clk_125_clk_in_bfm
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_bfm clk CLASS_NAME
+Info: send_message Warning TB_Gen: dma_mem_inst_clk_125_clk_in_reset_bfm is not associated to any clock; connecting dma_mem_inst_clk_125_clk_in_reset_bfm to 'dma_mem_inst_clk_125_clk_in_bfm.clk'
+Warning: TB_Gen: dma_mem_inst_clk_125_clk_in_reset_bfm is not associated to any clock; connecting dma_mem_inst_clk_125_clk_in_reset_bfm to 'dma_mem_inst_clk_125_clk_in_bfm.clk'
+Info: add_connection dma_mem_inst_clk_125_clk_in_bfm.clk dma_mem_inst_clk_125_clk_in_reset_bfm.clk
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in_reset CLASS_NAME
+Info: get_instance_interfaces dma_mem_inst_clk_125_clk_in_reset_bfm
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_reset_bfm clk CLASS_NAME
+Info: add_connection dma_mem_inst_clk_125_clk_in_reset_bfm.reset dma_mem_inst.clk_125_clk_in_reset
+Info: get_instance_interface_property dma_mem_inst ddr3_top_oct CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: ddr3_top_oct
+Info: TB_Gen: conduit_end found: ddr3_top_oct
+Info: get_instance_interface_property dma_mem_inst ddr3_top_oct CLASS_NAME
+Info: add_instance dma_mem_inst_ddr3_top_oct_bfm altera_conduit_bfm 
+Info: get_instance_property dma_mem_inst_ddr3_top_oct_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value dma_mem_inst ddr3_top_oct associatedClock
+Info: get_instance_interface_parameter_value dma_mem_inst ddr3_top_oct associatedReset
+Info: get_instance_interface_ports dma_mem_inst ddr3_top_oct
+Info: get_instance_interface_port_property dma_mem_inst ddr3_top_oct ddr3_top_oct_rzqin ROLE
+Info: get_instance_interface_port_property dma_mem_inst ddr3_top_oct ddr3_top_oct_rzqin WIDTH
+Info: get_instance_interface_port_property dma_mem_inst ddr3_top_oct ddr3_top_oct_rzqin DIRECTION
+Info: set_instance_parameter_value dma_mem_inst_ddr3_top_oct_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value dma_mem_inst_ddr3_top_oct_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value dma_mem_inst_ddr3_top_oct_bfm SIGNAL_ROLES rzqin
+Info: set_instance_parameter_value dma_mem_inst_ddr3_top_oct_bfm SIGNAL_WIDTHS 1
+Info: set_instance_parameter_value dma_mem_inst_ddr3_top_oct_bfm SIGNAL_DIRECTIONS output
+Info: get_instance_property dma_mem_inst_ddr3_top_oct_bfm CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst ddr3_top_oct CLASS_NAME
+Info: get_instance_interfaces dma_mem_inst_ddr3_top_oct_bfm
+Info: get_instance_interface_property dma_mem_inst_ddr3_top_oct_bfm conduit CLASS_NAME
+Info: add_connection dma_mem_inst_ddr3_top_oct_bfm.conduit dma_mem_inst.ddr3_top_oct
+Info: get_instance_interface_property dma_mem_inst sdram_avl CLASS_NAME
+Info: send_message Info TB_Gen: avalon_slave found: sdram_avl
+Info: TB_Gen: avalon_slave found: sdram_avl
+Info: get_instance_interface_property dma_mem_inst sdram_avl CLASS_NAME
+Info: add_instance dma_mem_inst_sdram_avl_bfm altera_avalon_mm_master_bfm 
+Info: get_instance_property dma_mem_inst_sdram_avl_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl bitsPerSymbol
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl addressUnits
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl burstOnBurstBoundariesOnly
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl linewrapBursts
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl readLatency
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl maximumPendingReadTransactions
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl readWaitTime
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl writeWaitTime
+Info: get_instance_interface_property dma_mem_inst sdram_avl CLASS_NAME
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl addressAlignment
+Info: get_instance_interface_ports dma_mem_inst sdram_avl
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_waitrequest_n ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_beginbursttransfer ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_address ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_address WIDTH
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_readdatavalid ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_readdata ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_readdata WIDTH
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_writedata ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_writedata WIDTH
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_read ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_write ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_burstcount ROLE
+Info: get_instance_interface_port_property dma_mem_inst sdram_avl sdram_avl_burstcount WIDTH
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_SYMBOL_W 8
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm ADDRESS_UNITS WORDS
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_BURST_BNDR_ONLY 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_BURST_LINEWRAP 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_FIX_READ_LATENCY 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_MAX_PENDING_READS 32
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_READ_WAIT_TIME 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_WRITE_WAIT_TIME 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm REGISTER_WAITREQUEST 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_ADDRESS_W 25
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_ADDRESS 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_BURSTCOUNT_W 9
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_BURSTCOUNT 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_NUMSYMBOLS 32
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_READ_DATA 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_WRITE_DATA 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_BEGIN_TRANSFER 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_BEGIN_BURST_TRANSFER 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_WAIT_REQUEST 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_WRITE 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_READ 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_BYTE_ENABLE 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_READ_DATA_VALID 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_ARBITERLOCK 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_DEBUGACCESS 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_TRANSACTIONID 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_READRESPONSE_W 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_READRESPONSE 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm AV_WRITERESPONSE_W 1
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_WRITERESPONSE 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm USE_CLKEN 0
+Info: set_instance_parameter_value dma_mem_inst_sdram_avl_bfm VHDL_ID 0
+Info: get_instance_property dma_mem_inst_sdram_avl_bfm CLASS_NAME
+Info: get_instance_interfaces dma_mem_inst_sdram_avl_bfm
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm clk CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm clk_reset CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm m0 CLASS_NAME
+Info: get_instance_property dma_mem_inst_sdram_avl_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl associatedClock
+Info: get_instance_interface_property dma_mem_inst sdram_afi_clk CLASS_NAME
+Info: add_connection dma_mem_inst.sdram_afi_clk dma_mem_inst_sdram_avl_bfm.clk
+Info: get_instance_interfaces dma_mem_inst_sdram_avl_bfm
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm clk CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm clk_reset CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm m0 CLASS_NAME
+Info: get_instance_property dma_mem_inst_sdram_avl_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value dma_mem_inst sdram_avl associatedReset
+Info: get_instance_interface_property dma_mem_inst clk_125_clk_in_reset CLASS_NAME
+Info: get_instance_interfaces dma_mem_inst_clk_125_clk_in_reset_bfm
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_clk_125_clk_in_reset_bfm clk CLASS_NAME
+Info: add_connection dma_mem_inst_clk_125_clk_in_reset_bfm.reset dma_mem_inst_sdram_avl_bfm.clk_reset
+Info: get_instance_interface_property dma_mem_inst sdram_avl CLASS_NAME
+Info: get_instance_interfaces dma_mem_inst_sdram_avl_bfm
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm clk CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm clk_reset CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst_sdram_avl_bfm m0 CLASS_NAME
+Info: add_connection dma_mem_inst_sdram_avl_bfm.m0 dma_mem_inst.sdram_avl
+Info: get_instance_interface_property dma_mem_inst ddr3_top_memory CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end (for partner module) found: ddr3_top_memory
+Info: TB_Gen: conduit_end (for partner module) found: ddr3_top_memory
+Info: add_instance sdram_mem_model altera_mem_if_ddr3_mem_model 
+Info: set_instance_parameter_value sdram_mem_model AC_PARITY false
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR0 0001000100001
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR0_CALIB 
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR0_DLL_RESET 0001100100000
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR0_DLL_RESET_MIRR 0001011000000
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR0_MIRR 0001001000001
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR1 0000000000100
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR1_CALIB 
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR1_MIRR 0000000000100
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR1_OCD_ENABLE 
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR2 0000000000000
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR2_MIRR 0000000000000
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR3 0000000000000
+Info: set_instance_parameter_value sdram_mem_model AC_ROM_MR3_MIRR 0000000000000
+Info: set_instance_parameter_value sdram_mem_model ADDR_CMD_DDR 0
+Info: set_instance_parameter_value sdram_mem_model ADDR_RATE_RATIO 1
+Info: set_instance_parameter_value sdram_mem_model AFI_ADDR_WIDTH 28
+Info: set_instance_parameter_value sdram_mem_model AFI_BANKADDR_WIDTH 6
+Info: set_instance_parameter_value sdram_mem_model AFI_CLK_EN_WIDTH 2
+Info: set_instance_parameter_value sdram_mem_model AFI_CLK_PAIR_COUNT 1
+Info: set_instance_parameter_value sdram_mem_model AFI_CONTROL_WIDTH 2
+Info: set_instance_parameter_value sdram_mem_model AFI_CS_WIDTH 2
+Info: set_instance_parameter_value sdram_mem_model AFI_DM_WIDTH 32
+Info: set_instance_parameter_value sdram_mem_model AFI_DQ_WIDTH 256
+Info: set_instance_parameter_value sdram_mem_model AFI_ODT_WIDTH 2
+Info: set_instance_parameter_value sdram_mem_model AFI_RATE_RATIO 2
+Info: set_instance_parameter_value sdram_mem_model AFI_RLAT_WIDTH 6
+Info: set_instance_parameter_value sdram_mem_model AFI_RRANK_WIDTH 16
+Info: set_instance_parameter_value sdram_mem_model AFI_WLAT_WIDTH 6
+Info: set_instance_parameter_value sdram_mem_model AFI_WRANK_WIDTH 16
+Info: set_instance_parameter_value sdram_mem_model AFI_WRITE_DQS_WIDTH 16
+Info: set_instance_parameter_value sdram_mem_model ALTMEMPHY_COMPATIBLE_MODE false
+Info: set_instance_parameter_value sdram_mem_model AP_MODE false
+Info: set_instance_parameter_value sdram_mem_model AP_MODE_EN 0
+Info: set_instance_parameter_value sdram_mem_model CFG_TCCD 1
+Info: set_instance_parameter_value sdram_mem_model CFG_TCCD_NS 2.5
+Info: set_instance_parameter_value sdram_mem_model CTL_RD_TO_PCH_EXTRA_CLK 0
+Info: set_instance_parameter_value sdram_mem_model CTL_RD_TO_RD_DIFF_CHIP_EXTRA_CLK 1
+Info: set_instance_parameter_value sdram_mem_model CTL_RD_TO_RD_EXTRA_CLK 0
+Info: set_instance_parameter_value sdram_mem_model CTL_WR_TO_WR_DIFF_CHIP_EXTRA_CLK 1
+Info: set_instance_parameter_value sdram_mem_model CTL_WR_TO_WR_EXTRA_CLK 0
+Info: set_instance_parameter_value sdram_mem_model CUT_NEW_FAMILY_TIMING true
+Info: set_instance_parameter_value sdram_mem_model DATA_RATE_RATIO 2
+Info: set_instance_parameter_value sdram_mem_model DAT_DATA_WIDTH 32
+Info: set_instance_parameter_value sdram_mem_model DEVICE_DEPTH 1
+Info: set_instance_parameter_value sdram_mem_model DEVICE_FAMILY Cyclone V
+Info: set_instance_parameter_value sdram_mem_model DEVICE_FAMILY_PARAM 
+Info: set_instance_parameter_value sdram_mem_model DEVICE_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model DISABLE_CHILD_MESSAGING false
+Info: set_instance_parameter_value sdram_mem_model DISCRETE_FLY_BY true
+Info: set_instance_parameter_value sdram_mem_model DQ_DDR 1
+Info: set_instance_parameter_value sdram_mem_model DUPLICATE_AC false
+Info: set_instance_parameter_value sdram_mem_model FLY_BY true
+Info: set_instance_parameter_value sdram_mem_model FORCE_DQS_TRACKING AUTO
+Info: set_instance_parameter_value sdram_mem_model FORCE_SHADOW_REGS AUTO
+Info: set_instance_parameter_value sdram_mem_model HARD_EMIF false
+Info: set_instance_parameter_value sdram_mem_model HARD_PHY false
+Info: set_instance_parameter_value sdram_mem_model HHP_HPS false
+Info: set_instance_parameter_value sdram_mem_model HHP_HPS_SIMULATION false
+Info: set_instance_parameter_value sdram_mem_model HHP_HPS_VERIFICATION false
+Info: set_instance_parameter_value sdram_mem_model HPS_PROTOCOL DEFAULT
+Info: set_instance_parameter_value sdram_mem_model IS_ES_DEVICE false
+Info: set_instance_parameter_value sdram_mem_model LRDIMM false
+Info: set_instance_parameter_value sdram_mem_model LRDIMM_EXTENDED_CONFIG 0x000000000000000000
+Info: set_instance_parameter_value sdram_mem_model LRDIMM_INT 0
+Info: set_instance_parameter_value sdram_mem_model MEM_ASR Manual
+Info: set_instance_parameter_value sdram_mem_model MEM_ATCL Disabled
+Info: set_instance_parameter_value sdram_mem_model MEM_ATCL_INT 0
+Info: set_instance_parameter_value sdram_mem_model MEM_AUTO_LEVELING_MODE true
+Info: set_instance_parameter_value sdram_mem_model MEM_BANKADDR_WIDTH 3
+Info: set_instance_parameter_value sdram_mem_model MEM_BL OTF
+Info: set_instance_parameter_value sdram_mem_model MEM_BT Sequential
+Info: set_instance_parameter_value sdram_mem_model MEM_BURST_LENGTH 8
+Info: set_instance_parameter_value sdram_mem_model MEM_CK_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_CLK_EN_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_CLK_FREQ 300.0
+Info: set_instance_parameter_value sdram_mem_model MEM_CLK_FREQ_MAX 533.333
+Info: set_instance_parameter_value sdram_mem_model MEM_CLK_MAX_NS 1.875
+Info: set_instance_parameter_value sdram_mem_model MEM_CLK_MAX_PS 1875.0
+Info: set_instance_parameter_value sdram_mem_model MEM_CLK_TO_DQS_CAPTURE_DELAY 100000
+Info: set_instance_parameter_value sdram_mem_model MEM_COL_ADDR_WIDTH 10
+Info: set_instance_parameter_value sdram_mem_model MEM_CS_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_DLL_EN true
+Info: set_instance_parameter_value sdram_mem_model MEM_DQS_TO_CLK_CAPTURE_DELAY 450
+Info: set_instance_parameter_value sdram_mem_model MEM_DQ_PER_DQS 8
+Info: set_instance_parameter_value sdram_mem_model MEM_DQ_WIDTH 64
+Info: set_instance_parameter_value sdram_mem_model MEM_DRV_STR RZQ/6
+Info: set_instance_parameter_value sdram_mem_model MEM_FORMAT DISCRETE
+Info: set_instance_parameter_value sdram_mem_model MEM_GUARANTEED_WRITE_INIT false
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_ADDR_WIDTH 14
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_ADDR_WIDTH_MIN 13
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_BANKADDR_WIDTH 3
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_BOARD_BASE_DELAY 10
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CHIP_BITS 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CK_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CLK_EN_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CLK_PAIR_COUNT 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_COL_ADDR_WIDTH 10
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CONTROL_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CS_PER_DIMM 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CS_PER_RANK 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_CS_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_DM_PINS_EN true
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_DM_WIDTH 8
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_DQSN_EN true
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_DQS_WIDTH 8
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_DQ_WIDTH 64
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_LRDIMM_RM 0
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_NUMBER_OF_RANKS 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_ODT_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_RD_TO_WR_TURNAROUND_OCT 2
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_READ_DQS_WIDTH 8
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_ROW_ADDR_WIDTH 14
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_SIM_VALID_WINDOW 0
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_WRITE_DQS_WIDTH 8
+Info: set_instance_parameter_value sdram_mem_model MEM_IF_WR_TO_RD_TURNAROUND_OCT 3
+Info: set_instance_parameter_value sdram_mem_model MEM_INIT_EN false
+Info: set_instance_parameter_value sdram_mem_model MEM_INIT_FILE 
+Info: set_instance_parameter_value sdram_mem_model MEM_LEVELING false
+Info: set_instance_parameter_value sdram_mem_model MEM_LRDIMM_ENABLED false
+Info: set_instance_parameter_value sdram_mem_model MEM_MIRROR_ADDRESSING 0
+Info: set_instance_parameter_value sdram_mem_model MEM_MIRROR_ADDRESSING_DEC 0
+Info: set_instance_parameter_value sdram_mem_model MEM_NUMBER_OF_DIMMS 1
+Info: set_instance_parameter_value sdram_mem_model MEM_NUMBER_OF_RANKS_PER_DEVICE 1
+Info: set_instance_parameter_value sdram_mem_model MEM_NUMBER_OF_RANKS_PER_DIMM 1
+Info: set_instance_parameter_value sdram_mem_model MEM_PD DLL off
+Info: set_instance_parameter_value sdram_mem_model MEM_RANK_MULTIPLICATION_FACTOR 1
+Info: set_instance_parameter_value sdram_mem_model MEM_REGDIMM_ENABLED false
+Info: set_instance_parameter_value sdram_mem_model MEM_ROW_ADDR_WIDTH 14
+Info: set_instance_parameter_value sdram_mem_model MEM_RTT_NOM RZQ/4
+Info: set_instance_parameter_value sdram_mem_model MEM_RTT_WR Dynamic ODT off
+Info: set_instance_parameter_value sdram_mem_model MEM_SRT Normal
+Info: set_instance_parameter_value sdram_mem_model MEM_TCL 6
+Info: set_instance_parameter_value sdram_mem_model MEM_TDQSCK 1
+Info: set_instance_parameter_value sdram_mem_model MEM_TFAW 14
+Info: set_instance_parameter_value sdram_mem_model MEM_TFAW_NS 45.0
+Info: set_instance_parameter_value sdram_mem_model MEM_TINIT_CK 150000
+Info: set_instance_parameter_value sdram_mem_model MEM_TINIT_US 500
+Info: set_instance_parameter_value sdram_mem_model MEM_TMRD_CK 4
+Info: set_instance_parameter_value sdram_mem_model MEM_TRAS 11
+Info: set_instance_parameter_value sdram_mem_model MEM_TRAS_NS 36.0
+Info: set_instance_parameter_value sdram_mem_model MEM_TRC 15
+Info: set_instance_parameter_value sdram_mem_model MEM_TRCD 5
+Info: set_instance_parameter_value sdram_mem_model MEM_TRCD_NS 13.5
+Info: set_instance_parameter_value sdram_mem_model MEM_TREFI 2341
+Info: set_instance_parameter_value sdram_mem_model MEM_TREFI_US 7.8
+Info: set_instance_parameter_value sdram_mem_model MEM_TRFC 49
+Info: set_instance_parameter_value sdram_mem_model MEM_TRFC_NS 160.0
+Info: set_instance_parameter_value sdram_mem_model MEM_TRP 5
+Info: set_instance_parameter_value sdram_mem_model MEM_TRP_NS 13.5
+Info: set_instance_parameter_value sdram_mem_model MEM_TRRD 3
+Info: set_instance_parameter_value sdram_mem_model MEM_TRRD_NS 7.5
+Info: set_instance_parameter_value sdram_mem_model MEM_TRTP 3
+Info: set_instance_parameter_value sdram_mem_model MEM_TRTP_NS 7.5
+Info: set_instance_parameter_value sdram_mem_model MEM_TWR 5
+Info: set_instance_parameter_value sdram_mem_model MEM_TWR_NS 15.0
+Info: set_instance_parameter_value sdram_mem_model MEM_TWTR 5
+Info: set_instance_parameter_value sdram_mem_model MEM_TYPE DDR3
+Info: set_instance_parameter_value sdram_mem_model MEM_USER_LEVELING_MODE Leveling
+Info: set_instance_parameter_value sdram_mem_model MEM_VENDOR Micron
+Info: set_instance_parameter_value sdram_mem_model MEM_VERBOSE true
+Info: set_instance_parameter_value sdram_mem_model MEM_WTCL 5
+Info: set_instance_parameter_value sdram_mem_model MEM_WTCL_INT 5
+Info: set_instance_parameter_value sdram_mem_model MR0_BL 1
+Info: set_instance_parameter_value sdram_mem_model MR0_BT 0
+Info: set_instance_parameter_value sdram_mem_model MR0_CAS_LATENCY 2
+Info: set_instance_parameter_value sdram_mem_model MR0_DLL 1
+Info: set_instance_parameter_value sdram_mem_model MR0_PD 0
+Info: set_instance_parameter_value sdram_mem_model MR0_WR 1
+Info: set_instance_parameter_value sdram_mem_model MR1_AL 0
+Info: set_instance_parameter_value sdram_mem_model MR1_DLL 0
+Info: set_instance_parameter_value sdram_mem_model MR1_DQS 0
+Info: set_instance_parameter_value sdram_mem_model MR1_ODS 0
+Info: set_instance_parameter_value sdram_mem_model MR1_QOFF 0
+Info: set_instance_parameter_value sdram_mem_model MR1_RDQS 0
+Info: set_instance_parameter_value sdram_mem_model MR1_RTT 1
+Info: set_instance_parameter_value sdram_mem_model MR1_TDQS 0
+Info: set_instance_parameter_value sdram_mem_model MR1_WL 0
+Info: set_instance_parameter_value sdram_mem_model MR2_ASR 0
+Info: set_instance_parameter_value sdram_mem_model MR2_CWL 0
+Info: set_instance_parameter_value sdram_mem_model MR2_RTT_WR 0
+Info: set_instance_parameter_value sdram_mem_model MR2_SRF 0
+Info: set_instance_parameter_value sdram_mem_model MR2_SRT 0
+Info: set_instance_parameter_value sdram_mem_model MR3_MPR 0
+Info: set_instance_parameter_value sdram_mem_model MR3_MPR_AA 0
+Info: set_instance_parameter_value sdram_mem_model MR3_MPR_RF 0
+Info: set_instance_parameter_value sdram_mem_model MRS_MIRROR_PING_PONG_ATSO false
+Info: set_instance_parameter_value sdram_mem_model NEXTGEN true
+Info: set_instance_parameter_value sdram_mem_model PARSE_FRIENDLY_DEVICE_FAMILY CYCLONEV
+Info: set_instance_parameter_value sdram_mem_model PARSE_FRIENDLY_DEVICE_FAMILY_CACHE_VALID true
+Info: set_instance_parameter_value sdram_mem_model PARSE_FRIENDLY_DEVICE_FAMILY_PARAM 
+Info: set_instance_parameter_value sdram_mem_model PARSE_FRIENDLY_DEVICE_FAMILY_PARAM_VALID false
+Info: set_instance_parameter_value sdram_mem_model PINGPONGPHY_EN false
+Info: set_instance_parameter_value sdram_mem_model PRE_V_SERIES_FAMILY false
+Info: set_instance_parameter_value sdram_mem_model RATE Half
+Info: set_instance_parameter_value sdram_mem_model RDIMM false
+Info: set_instance_parameter_value sdram_mem_model RDIMM_CONFIG 0000000000000000
+Info: set_instance_parameter_value sdram_mem_model RDIMM_INT 0
+Info: set_instance_parameter_value sdram_mem_model REFRESH_BURST_VALIDATION false
+Info: set_instance_parameter_value sdram_mem_model SCC_DATA_WIDTH 1
+Info: set_instance_parameter_value sdram_mem_model SPEED_GRADE 7
+Info: set_instance_parameter_value sdram_mem_model SYS_INFO_DEVICE_FAMILY Cyclone V
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDH 65
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDQSCK 255
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDQSCKDL 1200
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDQSCKDM 900
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDQSCKDS 450
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDQSQ 125
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDQSS 0.25
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDS 30
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDSH 0.2
+Info: set_instance_parameter_value sdram_mem_model TIMING_TDSS 0.2
+Info: set_instance_parameter_value sdram_mem_model TIMING_TIH 140
+Info: set_instance_parameter_value sdram_mem_model TIMING_TIS 190
+Info: set_instance_parameter_value sdram_mem_model TIMING_TQH 0.38
+Info: set_instance_parameter_value sdram_mem_model TIMING_TQSH 0.4
+Info: set_instance_parameter_value sdram_mem_model TRK_PARALLEL_SCC_LOAD false
+Info: set_instance_parameter_value sdram_mem_model USE_DQS_TRACKING false
+Info: set_instance_parameter_value sdram_mem_model USE_HPS_DQS_TRACKING false
+Info: set_instance_parameter_value sdram_mem_model USE_MEM_CLK_FREQ false
+Info: set_instance_parameter_value sdram_mem_model USE_NEG_EDGE_AC_TRANSFER_FOR_HPHY false
+Info: set_instance_parameter_value sdram_mem_model USE_SHADOW_REGS false
+Info: get_instance_interface_property dma_mem_inst ddr3_top_memory CLASS_NAME
+Info: get_instance_interface_property sdram_mem_model memory CLASS_NAME
+Info: get_instance_interface_property dma_mem_inst ddr3_top_memory CLASS_NAME
+Info: get_instance_interface_property sdram_mem_model memory CLASS_NAME
+Info: add_connection sdram_mem_model.memory dma_mem_inst.ddr3_top_memory
+Info: send_message Warning TB_Gen: dma_mem_inst.sdram_afi_clk is exported but not used
+Warning: TB_Gen: dma_mem_inst.sdram_afi_clk is exported but not used
+Info: send_message Info TB_Gen: Saving testbench system: dma_mem_tb.qsys
+Info: TB_Gen: Saving testbench system: dma_mem_tb.qsys
+Info: save_system dma_mem_tb.qsys
+Info: send_message Info TB_Gen: TBGEN SUCCESSFUL
+Info: TB_Gen: TBGEN SUCCESSFUL
+Info: Testbench system: E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/dma_mem_tb.qsys
+Info: Done
+Info: ip-generate --project-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\testbench --output-directory=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\testbench\dma_mem_tb\simulation --file-set=SIM_VERILOG --report-file=html:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\testbench\dma_mem_tb.html --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_qsys\testbench\dma_mem_tb.qsys --remove-qsys-generate-warning --report-file=csv:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem_tb.csv --report-file=spd:E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem_tb.spd
+Progress: Loading testbench/dma_mem_tb.qsys
+Progress: Reading input file
+Progress: Adding dma_mem_inst [dma_mem 1.0]
+Progress: Parameterizing module dma_mem_inst
+Progress: Adding dma_mem_inst_clk_125_clk_in_bfm [altera_avalon_clock_source 14.1]
+Progress: Parameterizing module dma_mem_inst_clk_125_clk_in_bfm
+Progress: Adding dma_mem_inst_clk_125_clk_in_reset_bfm [altera_avalon_reset_source 14.1]
+Progress: Parameterizing module dma_mem_inst_clk_125_clk_in_reset_bfm
+Progress: Adding dma_mem_inst_ddr3_top_oct_bfm [altera_conduit_bfm 14.1]
+Progress: Parameterizing module dma_mem_inst_ddr3_top_oct_bfm
+Progress: Adding dma_mem_inst_sdram_avl_bfm [altera_avalon_mm_master_bfm 14.1]
+Progress: Parameterizing module dma_mem_inst_sdram_avl_bfm
+Progress: Adding sdram_mem_model [altera_mem_if_ddr3_mem_model 14.1]
+Progress: Parameterizing module sdram_mem_model
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: dma_mem_tb.dma_mem_inst.sdram: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
+Warning: dma_mem_tb.dma_mem_inst.sdram.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
+Warning: dma_mem_tb.dma_mem_inst.sdram: sdram.status must be exported, or connected to a matching conduit.
+Warning: dma_mem_tb.dma_mem_inst.sdram: sdram.pll_sharing must be exported, or connected to a matching conduit.
+Info: dma_mem_tb.dma_mem_inst_clk_125_clk_in_bfm: Elaborate: altera_clock_source
+Info: dma_mem_tb.dma_mem_inst_clk_125_clk_in_bfm:            $Revision: #1 $
+Info: dma_mem_tb.dma_mem_inst_clk_125_clk_in_bfm:            $Date: 2014/10/06 $
+Info: dma_mem_tb.dma_mem_inst_clk_125_clk_in_reset_bfm: Elaborate: altera_reset_source
+Info: dma_mem_tb.dma_mem_inst_clk_125_clk_in_reset_bfm:            $Revision: #1 $
+Info: dma_mem_tb.dma_mem_inst_clk_125_clk_in_reset_bfm:            $Date: 2014/10/06 $
+Info: dma_mem_tb.dma_mem_inst_clk_125_clk_in_reset_bfm: Reset is negatively asserted.
+Info: dma_mem_tb: Generating dma_mem_tb "dma_mem_tb" for SIM_VERILOG
+Info: dma_mem_inst: "dma_mem_tb" instantiated dma_mem "dma_mem_inst"
+Info: dma_mem_inst_clk_125_clk_in_bfm: "dma_mem_tb" instantiated altera_avalon_clock_source "dma_mem_inst_clk_125_clk_in_bfm"
+Info: dma_mem_inst_clk_125_clk_in_reset_bfm: "dma_mem_tb" instantiated altera_avalon_reset_source "dma_mem_inst_clk_125_clk_in_reset_bfm"
+Info: Reusing file E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/dma_mem_tb/simulation/submodules/verbosity_pkg.sv
+Info: dma_mem_inst_ddr3_top_oct_bfm: "dma_mem_tb" instantiated altera_conduit_bfm "dma_mem_inst_ddr3_top_oct_bfm"
+Info: Reusing file E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/dma_mem_tb/simulation/submodules/verbosity_pkg.sv
+Info: dma_mem_inst_sdram_avl_bfm: "dma_mem_tb" instantiated altera_avalon_mm_master_bfm "dma_mem_inst_sdram_avl_bfm"
+Info: Reusing file E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/dma_mem_tb/simulation/submodules/verbosity_pkg.sv
+Info: sdram_mem_model: Preparing to generate verilog simulation fileset for alt_mem_if_ddr3_mem_model_top_ddr3_mem_if_dm_pins_en_mem_if_dqsn_en
+Info: sdram_mem_model: "dma_mem_tb" instantiated altera_mem_if_ddr3_mem_model "sdram_mem_model"
+Info: rst_controller: "dma_mem_tb" instantiated altera_reset_controller "rst_controller"
+Info: sdram: "dma_mem_inst" instantiated altera_mem_if_ddr3_emif "sdram"
+Info: pll0: "sdram" instantiated altera_mem_if_ddr3_pll "pll0"
+Info: p0: Generating clock pair generator
+Info: p0: Generating dma_mem_sdram_p0_altdqdqs
+Info: p0: "sdram" instantiated altera_mem_if_ddr3_phy_core "p0"
+Info: m0: "sdram" instantiated altera_mem_if_ddr3_afi_mux "m0"
+Info: s0: Generating Qsys sequencer system
+Info: s0: QSYS sequencer system generated successfully
+Info: s0: "sdram" instantiated altera_mem_if_ddr3_qseq "s0"
+Info: c0: "sdram" instantiated altera_mem_if_nextgen_ddr3_controller "c0"
+Info: oct0: "sdram" instantiated altera_mem_if_oct "oct0"
+Info: dll0: "sdram" instantiated altera_mem_if_dll "dll0"
+Info: ng0: "c0" instantiated altera_mem_if_nextgen_ddr3_controller_core "ng0"
+Info: a0: "c0" instantiated alt_mem_ddrx_mm_st_converter "a0"
+Info: dma_mem_tb: Done "dma_mem_tb" with 18 modules, 144 files
+Info: ip-generate succeeded.
+Info: sim-script-gen --spd=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem_tb.spd --output-directory=E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=E:\Research_Files\DarkMatter\Ethan_BE_170518_All_Modules_for_Resource_estimation\dma_mem_tb.spd --output-directory=E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	18 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in E:/Research_Files/DarkMatter/Ethan_BE_170518_All_Modules_for_Resource_estimation/dma_qsys/testbench/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create testbench Qsys system
