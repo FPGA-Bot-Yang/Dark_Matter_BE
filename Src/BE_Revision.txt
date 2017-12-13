@@ -1,0 +1,50 @@
+170105:
+	DRAM Controller
+	Transceiver Freq @2.5 Gbps
+	Entire data follow achieved: FE->BE->DRAM->DRAM Readout
+
+170113:
+	Implementing 2 RX transceivers on BE, each one has 1 channel, 2 independent Trans IPs
+	(This implementation failed at P&R step. Seems that now enough High frequency clocks can be provided for ports close to each other.)
+
+170114:
+	Another implemetaion: use 2 channels under one transceiver IP. 
+	Potential problem with this implementation: 
+		* Data from different board comes at different time
+		* For multiple channels implemetation, have to wait until all channels achieve alignment before the transceiver can work.	
+	
+
+170321:
+	Mapped 4 transceivers on BE using HSMCB port. 4 RX share the same reconfig module, the rest are independent.
+
+170323:
+	Test 4 RX channel independently. Each one is working at a data rate of 2.5Gbps. Should able to work when all 4 are connected simutanenously.
+
+170328:
+	Mapped 8 transcevier ports on the BE board.
+	Current testing with the FE board with a problematic SERDES board, the BE never received the correct data. 
+	Need further test with the original SERDES board and test one by one.
+
+170329:
+	After long long testing, find out that using the LCD pins as GPIO is a bad idea. Somehow when you use that one as output, the transceiver stop working. The reason for that is suspect as follows:
+	* The rst_n is high when not in reset status, somehow that pin draw too much current when high and made the transceiver voltage not high enough?? maybe????
+
+170329:
+	Verified the RX0-3 working!
+
+171119:
+	BE:
+	RX_Buf_Ctrl:
+		Problem:
+			the 'start word' and 'timestamp' is not written into the buffer (was suppose to take all the data inside a packet)
+		Reason:
+			the 'Start_Recording' signal is set 2 cycles later than the arrival of 'start word'
+		Fix:
+			change 'Start_Recording' signal to 1 in state 'WAIT_FOR_START'
+
+171212:
+	BE:
+	Channel_Data_Reorder_Buffer:
+		Modified the timing issues.
+		Optimize the testbench for generating packets that mimic the real time case in terms of timing.
+		Notice the problem in simulation that for the buffer with different size ports(write 16bit, read 256bit), the read port need to work under a slower clock frequency.
