@@ -41,7 +41,6 @@ module RX_Buf_Ctrl(
 	wire[1:0]	Buffer_full;
 	wire[15:0]	Buffer_0_RD_Data;
 	wire[15:0]	Buffer_1_RD_Data;
-	reg [15:0]	Buffer_WR_Data;
 	
 	
 	// Assign the output buffer data from 2 buffers
@@ -52,7 +51,7 @@ module RX_Buf_Ctrl(
 	
 	// When there's one or more buffer ready to be read, then the Buffer_RD_Ready signal is set
 	//assign Buffer_Data_Ready = (Buffer_RD_Ready != 0)? 1 : 0;
-	assign Buffer_Data_Ready = (Buffer_RD_Ready & ~RX_Buffer_empty) ? 1 : 0;
+	assign Buffer_Data_Ready = (Buffer_RD_Ready[RD_Buffer_Select] & ~RX_Buffer_empty) ? 1 : 0;
 	
 	/* Assign RX_Buffer_empty to reflect the state of the buffer indicated by RD_Buffer_Select */
 	assign RX_Buffer_empty = (RD_Buffer_Select) ? Buffer_empty[1] : Buffer_empty[0];
@@ -66,7 +65,7 @@ module RX_Buf_Ctrl(
 		.wrclk(rx_std_clkout),										// WR clk, connect to rx_std_clkout
 		.wrreq(Start_Recording & !WR_Buffer_Select),			// WR request
 		.wrfull(Buffer_full[0]),									// FIFO full flag
-		.data(Buffer_WR_Data)													// WR data
+		.data(RX_data)													// WR data
 		);
 		
 	RX_FIFO RX_Buffer_1(
@@ -77,7 +76,7 @@ module RX_Buf_Ctrl(
 		.wrclk(rx_std_clkout),										// WR clk, connect to rx_std_clkout
 		.wrreq(Start_Recording & WR_Buffer_Select),			// WR request
 		.wrfull(Buffer_full[1]),									// FIFO full flag
-		.data(Buffer_WR_Data)													// WR data
+		.data(RX_data)													// WR data
 		);
 	
 	
@@ -94,28 +93,23 @@ module RX_Buf_Ctrl(
 			WR_Buffer_Select <= 1'b0;
 			RD_Buffer_Select <= 1'b1;														// Differs from the WR select
 			Buffer_WR_Counter <= 7'd0;
-			Buffer_WR_Data <= 16'd0;
 			// FSM control
 			State <= WAIT_FOR_START;
 			end
 		else if(rx_syncstatus == 2'b11 & rx_datak == 2'b00)
-			Buffer_WR_Data <= RX_data;
 			begin
 			case(State)
 				WAIT_FOR_START:
 					begin
 					Buffer_RD_Ready <= Buffer_RD_Ready;
+					Start_Recording <= 1'b0;
 					WR_Buffer_Select <= WR_Buffer_Select;
 					RD_Buffer_Select <= RD_Buffer_Select;
 					Buffer_WR_Counter <= 7'd0;
-						if(RX_data == 16'hDEAD) begin 													// Find the starting word
-							State <= BUFFERING;
-							Start_Recording <= 1'b1;
-						end 
-						else begin 
-							State <= WAIT_FOR_START;
-							Start_Recording <= 1'b0;
-						end 
+					if(RX_data == 16'hDEAD)													// Find the starting word
+						State <= BUFFERING;
+					else
+						State <= WAIT_FOR_START;
 					end
 					
 				BUFFERING:
@@ -127,7 +121,7 @@ module RX_Buf_Ctrl(
 					if((RX_data == 16'h7FFF)&(Buffer_WR_Counter > 120))		 	// Find the ending word while make sure enough number of data is received
 																									// Make sure the ending word is not the same as real data word
 						begin
-						Start_Recording <= 1'b1;	/* Finish write */
+						Start_Recording <= 1'b0;											// End recording when the ending data is detected, make sure the ending data won't be written to buffer
 						State <= END_RECORDING;
 						end
 					else
@@ -144,18 +138,16 @@ module RX_Buf_Ctrl(
 				END_RECORDING:
 					begin
 					Buffer_RD_Ready[WR_Buffer_Select] <= 1'b1;						// Assign the current writing buffer as ready for read after the writing is finished
-					Buffer_RD_Ready[!WR_Buffer_Select] <= Buffer_RD_Ready[!WR_Buffer_Select];	// Keep the staus of the other buffer
+					Buffer_RD_Ready[!WR_Buffer_Select] <= Buffer_RD_Ready[!WR_Buffer_Select] & ~RX_Buffer_empty;	// Keep the staus of the other buffer
+					Start_Recording <= 1'b0;
 					WR_Buffer_Select <= WR_Buffer_Select + 1'b1;						// Point to next WR Buffer
 					RD_Buffer_Select <= RD_Buffer_Select + 1'b1;						// Point to next RD Buffer
 					Buffer_WR_Counter <= 7'd0;
-						if(RX_data == 16'hBEEF) begin 													// Check if the next package is coming immediately after the previous one
-							State <= BUFFERING;
-							Start_Recording <= 1'b1;
-						end 
-						else begin 
-							State <= WAIT_FOR_START;
-							Start_Recording <= 1'b0;
-						end 	
+					if(RX_data == 16'hBEEF)													// Check if the next package is coming immediately after the previous one
+						State <= BUFFERING;
+					else
+						State <= WAIT_FOR_START;
+						
 					end		
 			
 			endcase
