@@ -7,6 +7,8 @@
 // 	Reordering the input data from each front end board that sampled at the same time and regroup them based on the channel ID
 // 	Write the reordered data into DRAM
 //		When the packet arrives, the packet header is used to align, but then discarded and won't be written into the reorder buffer
+//		The received data from RX_FIFO suppose to include all the FE packets, including STARTING WORD, TIMESTAMP, 125*PAYLOAD, and ENDING WORD
+//		The data written into the reorder buffer only including: TIMESTAMP, 125*PAYLOAD
 //
 // Module connect to: DRAM controller, RX_buf_ctrl, Threshold_Global_Coordinator
 //

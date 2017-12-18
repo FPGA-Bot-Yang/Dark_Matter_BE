@@ -16,21 +16,21 @@ module RX_Buf_Ctrl_tb;
 	/* Loop Variables */
 	integer ii, jj;
 	reg [3:0]		count0;
-	reg [6:0]		count1;
+	reg [11:0]		count1;
 	reg [15:0]		TS;
 	RX_Buf_Ctrl UUT (
-		.rx_std_clkout(rx_std_clkout),
-		.rst_n(rst_n),
-		.rx_syncstatus(rx_syncstatus),
-		.rx_datak(rx_datak),
-		.RX_data(RX_data),
+		.rx_std_clkout(rx_std_clkout),					// input
+		.rst_n(rst_n),											// input
+		.rx_syncstatus(rx_syncstatus),					// input
+		.rx_datak(rx_datak),									// input
+		.RX_data(RX_data),									// input
 		
 		// DRAM Writing Signal 
-		.DRAM_RD_clk(DRAM_RD_clk),
-		.DRAM_RD_req(DRAM_RD_req),
-		.RX_Buffer_empty(RX_Buffer_empty),
-		.Buffer_RD_Data(Buffer_RD_Data),
-		.Buffer_Data_Ready(Buffer_Data_Ready)
+		.DRAM_RD_clk(DRAM_RD_clk),							// input
+		.DRAM_RD_req(DRAM_RD_req),							// input
+		.RX_Buffer_empty(RX_Buffer_empty),				// output
+		.Buffer_RD_Data(Buffer_RD_Data),					// output
+		.Buffer_Data_Ready(Buffer_Data_Ready)			// output
 	);
 	
 	/* Generate Clocks
@@ -41,8 +41,8 @@ module RX_Buf_Ctrl_tb;
 		#6 rx_std_clkout <= ~rx_std_clkout;
 	end 
 	
-	always begin 
-		#5 DRAM_RD_clk <= ~DRAM_RD_clk;
+	always begin
+		#6 DRAM_RD_clk <= ~DRAM_RD_clk;
 	end 
 	
 	/* Control Buffer RD Requests */
@@ -63,8 +63,10 @@ module RX_Buf_Ctrl_tb;
 		
 		DRAM_RD_clk <= 1'b0;	
 		count0 <= 4'd0;
-		count1 <= 7'd0;
+		count1 <= 12'd0;
 		TS <= 16'd5;
+		
+		
 		
 		/* Turn off Reset */
 		#12;
@@ -73,12 +75,16 @@ module RX_Buf_Ctrl_tb;
 		/* Begin data transmission */
 		#6;
 		for (ii = 0; ii < 16; ii = ii + 1) begin 
-			if (ii % 4 == 0) begin 
+/*
+		if (ii % 4 == 0) begin 
 				#36 RX_data <= 16'hFFFF; // Do not go directly to buffer
 				#12 RX_data <= 16'hDEAD;
-			end 
+				end 
 			else 
 				#12 RX_data <= 16'hBEEF;
+*/
+			#36 RX_data <= 16'hFFFF;
+			#12 RX_data <= 16'hDEAD;
 			count0 <= count0 + 1'b1;
 			for (jj = 0; jj < 127; jj = jj + 1) begin 
 				#12;
@@ -87,16 +93,19 @@ module RX_Buf_Ctrl_tb;
 					TS <= TS + 1'd1;
 				end 
 				else if (jj == 126) begin 
-					RX_data <= 16'h7FFF;
-					count1 <= 7'd0;				
+					RX_data <= 16'hBEEF;
+					count1 <= 12'd0;				
 				end 
 				else begin  
-					RX_data <= {4'd0, count0, count1};				
+					RX_data <= {count0, count1};				
 					count1 <= count1 + 1'b1;
 				end 
 			end 
-		end 
+		end
 			
-	end 
+		#1000;
+		$stop;
+		
+	end
 
 endmodule 

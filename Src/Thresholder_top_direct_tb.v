@@ -163,7 +163,7 @@ module Thresholder_top_direct_tb;
 			RX_data_5 <= 16'hFFFF;
 			RX_data_6 <= 16'hFFFF;
 			RX_data_7 <= 16'hFFFF;
-			TS <= 16'hFFF0;
+			TS <= 16'hFF00;
 			
 			
 			#10
@@ -174,13 +174,59 @@ module Thresholder_top_direct_tb;
 			rx_datak = 2'b00;
 			
 			#10;
-			for (ii = 0; ii < 128 * 25; ii = ii + 1) begin 
-			#2;
-			if (ii%128 == 0) begin RX_data_0 <= 16'hDEAD; end 											/* Start Word */
-				else if (ii%128 == 1) begin RX_data_0 <= TS; TS <= TS + 16'h1; end 					/* Time Stamp */
-				else if (ii%128 == 127) begin RX_data_0 <= 16'h7FFF; end 		/* End Word */
-				else begin RX_data_0 <= RX_data_0 + 16'h1; end 												/* Test data */			
-			end 
+			for (ii = 0; ii < 128 * 25; ii = ii + 1)
+				begin 
+				#2;
+				if (ii%128 == 0)													/* Start Word */
+					begin
+					RX_data_0 <= 16'hDEAD;
+					RX_data_1 <= 16'hDEAD;
+					RX_data_2 <= 16'hDEAD;
+					RX_data_3 <= 16'hDEAD;
+					RX_data_4 <= 16'hDEAD;
+					RX_data_5 <= 16'hDEAD;
+					RX_data_6 <= 16'hDEAD;
+					RX_data_7 <= 16'hDEAD;
+					end 											
+				else if (ii%128 == 1)											/* Time Stamp */
+					begin
+					RX_data_0 <= 16'h0;
+					RX_data_1 <= 16'h10;
+					RX_data_2 <= 16'h100;
+					RX_data_3 <= 16'h1000;
+					RX_data_4 <= 16'h1010;
+					RX_data_5 <= 16'hF0;
+					RX_data_6 <= 16'hFF0;
+					RX_data_7 <= 16'hFF00;
+					
+					TS <= TS + 16'h1; 
+					end 					
+				else if (ii%128 == 127)											/* End Word */
+					begin
+					RX_data_0 <= 16'hBEEF;
+					RX_data_1 <= 16'hBEEF;
+					RX_data_2 <= 16'hBEEF;
+					RX_data_3 <= 16'hBEEF;
+					RX_data_4 <= 16'hBEEF;
+					RX_data_5 <= 16'hBEEF;
+					RX_data_6 <= 16'hBEEF;
+					RX_data_7 <= 16'hBEEF;
+					end 		
+				else																	/* Test data */	
+					begin
+					RX_data_0 <= RX_data_0 + 16'h1;
+					RX_data_1 <= RX_data_1 + 16'h1;
+					RX_data_2 <= RX_data_2 + 16'h1;
+					RX_data_3 <= RX_data_3 + 16'h1;
+					RX_data_4 <= RX_data_4 + 16'h1;
+					RX_data_5 <= RX_data_5 + 16'h1;
+					RX_data_6 <= RX_data_6 + 16'h1;
+					RX_data_7 <= RX_data_7 + 16'h1;
+					end 														
+				end 
+			
+			#1000;
+			$stop;
 			
 //			#40
 //			RX_data_0 = 16'd65500;

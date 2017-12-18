@@ -287,7 +287,7 @@ module top
 		.BRAM_ready_mask(BRAM_ready_mask[0]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
 		.DRAM_wr_data(Buffer_RD_Data_0),
 		.BRAM_rd_request(BRAM_rd_request[0])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-	);
+		);
 	
 	// Transceiver RX for Board 1
 	Trans_RX B1_RX(
@@ -321,7 +321,7 @@ module top
 		.BRAM_ready_mask(BRAM_ready_mask[1]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
 		.DRAM_wr_data(Buffer_RD_Data_1),
 		.BRAM_rd_request(BRAM_rd_request[1])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-	);
+		);
 	// Transceiver RX for Board 2
 	Trans_RX B2_RX(
 		.rst_n(rst_n),
@@ -354,7 +354,7 @@ module top
 		.BRAM_ready_mask(BRAM_ready_mask[2]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
 		.DRAM_wr_data(Buffer_RD_Data_2),
 		.BRAM_rd_request(BRAM_rd_request[2])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-	);
+		);
 	
 	// Transceiver RX for Board 3
 	Trans_RX B3_RX(
@@ -388,7 +388,7 @@ module top
 		.BRAM_ready_mask(BRAM_ready_mask[3]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
 		.DRAM_wr_data(Buffer_RD_Data_3),
 		.BRAM_rd_request(BRAM_rd_request[3])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-	);
+		);
 		
 	// Transceiver RX for Board 4
 	Trans_RX B4_RX(
@@ -422,7 +422,7 @@ module top
 		.BRAM_ready_mask(BRAM_ready_mask[4]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
 		.DRAM_wr_data(Buffer_RD_Data_4),
 		.BRAM_rd_request(BRAM_rd_request[4])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-	);
+		);
 		
 	// Transceiver RX for Board 5
 	Trans_RX B5_RX(
@@ -443,20 +443,20 @@ module top
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_5(
-	.inclk(clk_trans),
-	.outclk(avalon_clk),
-	.rst_n(rst_n),
+		.inclk(clk_trans),
+		.outclk(avalon_clk),
+		.rst_n(rst_n),
 	
-	// Signal to buffer
-	.FIFO_ready_mask(FIFO_ready_mask[5]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
-	.FIFO_rd_data(FIFO_RD_Data_5),
-	.FIFO_rd_request(FIFO_rd_request[5]),		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
+		// Signal to buffer
+		.FIFO_ready_mask(FIFO_ready_mask[5]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
+		.FIFO_rd_data(FIFO_RD_Data_5),
+		.FIFO_rd_request(FIFO_rd_request[5]),		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
 
-	// Signal to DRAM user controller
-	.BRAM_ready_mask(BRAM_ready_mask[5]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
-	.DRAM_wr_data(Buffer_RD_Data_5),
-	.BRAM_rd_request(BRAM_rd_request[5])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-);
+		// Signal to DRAM user controller
+		.BRAM_ready_mask(BRAM_ready_mask[5]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
+		.DRAM_wr_data(Buffer_RD_Data_5),
+		.BRAM_rd_request(BRAM_rd_request[5])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
+		);
 		
 	// Transceiver RX for Board 6
 	Trans_RX B6_RX(
@@ -477,20 +477,20 @@ module top
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_6(
-	.inclk(clk_trans),
-	.outclk(avalon_clk),
-	.rst_n(rst_n),
+		.inclk(clk_trans),
+		.outclk(avalon_clk),
+		.rst_n(rst_n),
 	
-	// Signal to buffer
-	.FIFO_ready_mask(FIFO_ready_mask[6]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
-	.FIFO_rd_data(FIFO_RD_Data_6),
-	.FIFO_rd_request(FIFO_rd_request[6]),		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
+		// Signal to buffer
+		.FIFO_ready_mask(FIFO_ready_mask[6]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
+		.FIFO_rd_data(FIFO_RD_Data_6),
+		.FIFO_rd_request(FIFO_rd_request[6]),		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
 
-	// Signal to DRAM user controller
-	.BRAM_ready_mask(BRAM_ready_mask[6]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
-	.DRAM_wr_data(Buffer_RD_Data_6),
-	.BRAM_rd_request(BRAM_rd_request[6])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-);
+		// Signal to DRAM user controller
+		.BRAM_ready_mask(BRAM_ready_mask[6]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
+		.DRAM_wr_data(Buffer_RD_Data_6),
+		.BRAM_rd_request(BRAM_rd_request[6])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
+		);
 	
 	// Transceiver RX for Board 7
 	Trans_RX B7_RX(
@@ -510,21 +510,21 @@ module top
 		.Buffer_Data_Ready(FIFO_ready_mask[7])	
 		);
 		
-Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_7(
-	.inclk(clk_trans),
-	.outclk(avalon_clk),
-	.rst_n(rst_n),
+	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_7(
+		.inclk(clk_trans),
+		.outclk(avalon_clk),
+		.rst_n(rst_n),
 	
-	// Signal to buffer
-	.FIFO_ready_mask(FIFO_ready_mask[7]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
-	.FIFO_rd_data(FIFO_RD_Data_7),
-	.FIFO_rd_request(FIFO_rd_request[7]),		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
+		// Signal to buffer
+		.FIFO_ready_mask(FIFO_ready_mask[7]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
+		.FIFO_rd_data(FIFO_RD_Data_7),
+		.FIFO_rd_request(FIFO_rd_request[7]),		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
 
-	// Signal to DRAM user controller
-	.BRAM_ready_mask(BRAM_ready_mask[7]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
-	.DRAM_wr_data(Buffer_RD_Data_7),
-	.BRAM_rd_request(BRAM_rd_request[7])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-);
+		// Signal to DRAM user controller
+		.BRAM_ready_mask(BRAM_ready_mask[7]),			// bit mask for those ready FIFOs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
+		.DRAM_wr_data(Buffer_RD_Data_7),
+		.BRAM_rd_request(BRAM_rd_request[7])		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
+		);
 	
 	
 //	// Transciever Phy Reconfig Controller HSMCA

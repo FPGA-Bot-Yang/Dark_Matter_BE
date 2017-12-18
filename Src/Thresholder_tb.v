@@ -48,11 +48,14 @@ module Thresholder_tb;
 			#2;
 			if (ii%128 == 0) begin RX_data <= 16'hDEAD; end /* Start Word */
 			else if (ii%128 == 1) begin RX_data <= TS; TS <= TS + 16'h1; end /* Time Stamp */
-			else if (ii%128 == 127) begin RX_data <= 16'h7FFF; end /* End Word */
+			else if (ii%128 == 127) begin RX_data <= 16'hBEEF; end /* End Word */
 			else begin RX_data <= RX_data + 16'h1; end /* Test data */
 		end 
 		#2;
 		RX_data <= 16'd0;
+		
+		#1000
+		$stop;
 		
 	end
 

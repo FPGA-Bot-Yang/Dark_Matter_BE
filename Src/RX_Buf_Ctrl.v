@@ -1,6 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Trans RX Buffer Control Logic
-////////////////////////////////////////////////////////////////////////////////////////////////////
+// Function:
+//		FE packet: 0xDEAD, TIMESTAMP, 125 PAYLOAD, 0xBEEF
+// 	All the received the data, including the starting and ending word, are suppose to written into the FIFO
+//		Double buffer implemented
+//
+// By: Chen Yang, Jack Abernathy
+// Rev0: 05/01/2017
+//	Rev1 (Chen): 12/17/2017: fix the issue that the starting and timestamp is not written into the FIFO
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 module RX_Buf_Ctrl(
 	input 				rx_std_clkout,								// clk signal for RX data receiving
@@ -56,6 +64,12 @@ module RX_Buf_Ctrl(
 	/* Assign RX_Buffer_empty to reflect the state of the buffer indicated by RD_Buffer_Select */
 	assign RX_Buffer_empty = (RD_Buffer_Select) ? Buffer_empty[1] : Buffer_empty[0];
 	
+	// Due to the one cycle delay between the arrival of the starting word 0xDEAD and FIFO write signal, insert this delay
+	reg[15:0] RX_data_reg1;	
+	always@(posedge rx_std_clkout)
+		begin
+		RX_data_reg1 <= RX_data;
+		end
 		
 	RX_FIFO RX_Buffer_0(
 		.rdclk(DRAM_RD_clk),											// RD clk, connect to DRAM_RD_clk
@@ -65,7 +79,7 @@ module RX_Buf_Ctrl(
 		.wrclk(rx_std_clkout),										// WR clk, connect to rx_std_clkout
 		.wrreq(Start_Recording & !WR_Buffer_Select),			// WR request
 		.wrfull(Buffer_full[0]),									// FIFO full flag
-		.data(RX_data)													// WR data
+		.data(RX_data_reg1)													// WR data
 		);
 		
 	RX_FIFO RX_Buffer_1(
@@ -76,9 +90,11 @@ module RX_Buf_Ctrl(
 		.wrclk(rx_std_clkout),										// WR clk, connect to rx_std_clkout
 		.wrreq(Start_Recording & WR_Buffer_Select),			// WR request
 		.wrfull(Buffer_full[1]),									// FIFO full flag
-		.data(RX_data)													// WR data
+		.data(RX_data_reg1)													// WR data
 		);
 	
+	
+
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Control logic for writting RX buffer
@@ -96,20 +112,25 @@ module RX_Buf_Ctrl(
 			// FSM control
 			State <= WAIT_FOR_START;
 			end
-		else if(rx_syncstatus == 2'b11 & rx_datak == 2'b00)
+		else if(rx_syncstatus == 2'b11 && rx_datak == 2'b00)
 			begin
 			case(State)
 				WAIT_FOR_START:
 					begin
 					Buffer_RD_Ready <= Buffer_RD_Ready;
-					Start_Recording <= 1'b0;
 					WR_Buffer_Select <= WR_Buffer_Select;
 					RD_Buffer_Select <= RD_Buffer_Select;
 					Buffer_WR_Counter <= 7'd0;
-					if(RX_data == 16'hDEAD)													// Find the starting word
+					if(RX_data == 16'hDEAD)												// Find the starting word
+						begin
 						State <= BUFFERING;
+						Start_Recording <= 1'b1;
+						end
 					else
+						begin
 						State <= WAIT_FOR_START;
+						Start_Recording <= 1'b0;
+						end
 					end
 					
 				BUFFERING:
@@ -118,10 +139,10 @@ module RX_Buf_Ctrl(
 					WR_Buffer_Select <= WR_Buffer_Select;
 					RD_Buffer_Select <= RD_Buffer_Select;
 					Buffer_WR_Counter <= Buffer_WR_Counter + 1'b1;
-					if((RX_data == 16'h7FFF)&(Buffer_WR_Counter > 120))		 	// Find the ending word while make sure enough number of data is received
+					if((RX_data == 16'hBEEF)&&(Buffer_WR_Counter > 120))		 	// Find the ending word while make sure enough number of data is received
 																									// Make sure the ending word is not the same as real data word
 						begin
-						Start_Recording <= 1'b0;											// End recording when the ending data is detected, make sure the ending data won't be written to buffer
+						Start_Recording <= 1'b1;											// End recording when the ending data is detected, but make sure the ending data is still written into the buffer
 						State <= END_RECORDING;
 						end
 					else
@@ -138,12 +159,12 @@ module RX_Buf_Ctrl(
 				END_RECORDING:
 					begin
 					Buffer_RD_Ready[WR_Buffer_Select] <= 1'b1;						// Assign the current writing buffer as ready for read after the writing is finished
-					Buffer_RD_Ready[!WR_Buffer_Select] <= Buffer_RD_Ready[!WR_Buffer_Select] & ~RX_Buffer_empty;	// Keep the staus of the other buffer
+					Buffer_RD_Ready[!WR_Buffer_Select] <= Buffer_RD_Ready[!WR_Buffer_Select] && ~RX_Buffer_empty;	// Keep the staus of the other buffer
 					Start_Recording <= 1'b0;
 					WR_Buffer_Select <= WR_Buffer_Select + 1'b1;						// Point to next WR Buffer
 					RD_Buffer_Select <= RD_Buffer_Select + 1'b1;						// Point to next RD Buffer
 					Buffer_WR_Counter <= 7'd0;
-					if(RX_data == 16'hBEEF)													// Check if the next package is coming immediately after the previous one
+					if(RX_data == 16'hDEAD)													// Check if the next package is coming immediately after the previous one
 						State <= BUFFERING;
 					else
 						State <= WAIT_FOR_START;
