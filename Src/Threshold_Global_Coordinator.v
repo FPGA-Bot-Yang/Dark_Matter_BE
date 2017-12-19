@@ -99,7 +99,8 @@ module Threshold_Global_Coordinator(
 	end 
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Potential Problem:
+	// FIXED!!!!!!!!!!!!!!!!!!!!!!!
+	//	Potential Problem:
 	// The time stamp is too short: 16 bit only range from 0~65535, need an extra counter of method to record real time
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	assign {overflow, post_trigger_ending} = triggering_time_stamp + POST_TRIGGER_ENDING;		// 15ms of post-trigger data at 1Mhz
@@ -153,6 +154,7 @@ module Threshold_Global_Coordinator(
 							current_time_stamp <= 16'd0;
 							// Find the triggering stamp by finding the right most 1 bit in mask
 							////////////////////////////////////////////////////////////////////////////////////
+							// FIXED!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 							// Potential Problem: inefficiency?
 							//	Can the comparision be finished in 1 cycle??????? Simulate this and verify
 							////////////////////////////////////////////////////////////////////////////////////

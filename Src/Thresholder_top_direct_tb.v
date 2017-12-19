@@ -214,7 +214,7 @@ module Thresholder_top_direct_tb;
 					end 		
 				else																	/* Test data */	
 					begin
-					RX_data_0 <= RX_data_0 + 16'h1;
+					RX_data_0 <= RX_data_0;										// for test purpose, keep all data from RX0 to be 0
 					RX_data_1 <= RX_data_1 + 16'h1;
 					RX_data_2 <= RX_data_2 + 16'h1;
 					RX_data_3 <= RX_data_3 + 16'h1;
