@@ -5,6 +5,10 @@
 //		Read directly from the MGT RX port, but first detect the packet header and record the timestamp for the current packet
 //		One thresholder module for each RX port, a Global coordinator module that handles triggering signals from 8 threholders
 //
+//	Output Definition:
+//		set_global_trigger: if one data is triggered, it will set, but the next cycle is may fall back to 0
+//		time_stamp: signify the timestamp for the current data that being checked, will remain the same for data from the same FE packets
+//
 // By: Chen Yang, Jack Abernathy
 // Rev0: 05/01/2017
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

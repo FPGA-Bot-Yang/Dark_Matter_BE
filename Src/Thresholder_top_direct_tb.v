@@ -201,7 +201,7 @@ module Thresholder_top_direct_tb;
 					
 					TS <= TS + 16'h1; 
 					end 					
-				else if (ii%128 == 127)											/* End Word */
+				else if (ii%128 == 127)											/* Ending Word */
 					begin
 					RX_data_0 <= 16'hBEEF;
 					RX_data_1 <= 16'hBEEF;

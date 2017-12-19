@@ -1,3 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Top wrapper for thresholders based on amplitudes
+// Function:
+//		Connect 8 thresholder modules with the thresholder coordinator
+//		Output the first tirggering timestamp from the 8 boards and last for triggering window time
+//		Attention!!!: Currently how to use the trigger output is not defined. The initial thoughts is: Use the first trigger timestamp as the base, then get the start and ending trigger timestamp in different module(DRAM_Ctrl?) and mark those triggered parts in DRAM
+//		Glitch 1: The coordinator originally should take 8 input clocks, but currently just use clk from RX0
+//		Glitch 2: Ex. Sometime, trigger 0 might trigger on T10, while trigger 6 might trigger on T9. However, Trigger 0 set the trigger earlier than Trigger 6, then in that case, we will use T10 as the first trigger time, but this shouldn't be a big problem as the time offset won't be very large, supposing to be within 4 cycles
+//
+//	Output Definition:
+//		triggering_time_stamp: the first triggering timestamp, the receiving side should use this to calculate the starting and ending points. It will remain the same during a single triggering event
+//		threshold_decision_to_DRAM_ctrl: This signal will keep high from the first triggering point till it reaches ending triggering point. 
+//													On the receiving side, it should keep on checking this signal and compare with the triggering time stamp, there will be a falling edge each time one triggering event is finish
+//
+// By: Chen Yang
+// Rev0: 05/01/2017
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 module Thresholder_top_direct(
 	input 				rst_n,										// reset signal, reset on low
 
@@ -37,7 +56,8 @@ module Thresholder_top_direct(
 	// The first tiggered timestamp, valid only if threshold_decision_to_DRAM_ctrl=1
 	// Send to DRAM controller so it can be directly used for mask updating
 	output [15:0]		triggering_time_stamp,
-	output            threshold_decision_to_DRAM_ctrl
+	output            threshold_decision_to_DRAM_ctrl	// This signal will keep high from the first triggering point till it reaches ending triggering point
+																		// on the receiving side, it should keep on checking this signal and compare with the triggering time stamp, there will be a falling edge each time one triggering event is finish
 );
 	parameter POST_TRIGGER_ENDING = 16'd15000;
 

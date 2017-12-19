@@ -1,3 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Thresholder coordinator, used to sync the triggering signal from 8 thresholders
+// Function:
+//		Originally the 8 thresholders just output high when they find the value is larger than threshold, and set back to 0 if the next data is back to below tresholder
+//		The fucntion of this module: whichever trigger sets first, will use that time as the starting trigger time. And last the trigger timespan over the triggering window length
+//		Once entered the triggering mode, it will stay for post_trigger_window time based on the triggering channels timestamp, during the process, it won't check again
+//		Glitch 1:Suppose to use clock from each one of the RX modules directly, but currently just use clk from RX0 for ease of design
+//		Glitch 2: Ex. Sometime, trigger 0 might trigger on T10, while trigger 6 might trigger on T9. However, Trigger 0 set the trigger earlier than Trigger 6, then in that case, we will use T10 as the first trigger time, but this shouldn't be a big problem as the time offset won't be very large, supposing to be within 4 cycles
+//
+//	Output Definition:
+//		triggering_time_stamp: the first triggering timestamp, the receiving side should use this to calculate the starting and ending points. It will remain the same during a single triggering event
+//		threshold_decision_to_DRAM_ctrl: This signal will keep high from the first triggering point till it reaches ending triggering point. 
+//													On the receiving side, it should keep on checking this signal and compare with the triggering time stamp, there will be a falling edge each time one triggering event is finish
+//
+// By: Chen Yang
+// Rev0: 05/01/2017
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 module Threshold_Global_Coordinator(
 	input clk,
 	input rst_n,
@@ -19,8 +37,11 @@ module Threshold_Global_Coordinator(
 	input [15:0] B7_time_stamp,
 	input B7_decision,
 
-	output reg [15:0] triggering_time_stamp,			// This signal will cross clock domain
-	output reg threshold_decision_to_DRAM_ctrl		// This signal will cross clock domain
+	output reg [15:0] triggering_time_stamp,			// Outputing the first detected triggering time point, the receving module should based on this to calculate the starting and ending point
+																	// This signal will cross clock domain
+	output reg threshold_decision_to_DRAM_ctrl		// This signal will keep high from the first triggering point till it reaches ending triggering point
+																	// on the receiving side, it should keep on checking this signal and compare with the triggering time stamp, there will be a falling edge each time one triggering event is finish
+																	// This signal will cross clock domain
 );
 	integer ii;
 	parameter WAIT_FOR_START =	2'b00;
@@ -31,16 +52,13 @@ module Threshold_Global_Coordinator(
 	
 	reg [1:0] State;	
 	reg [7:0] Status_Mask;
-	
-	
-	
 
 	/* Trigger Recording Logic */
 	//reg [15:0] triggering_time_stamp;
 	reg [2:0]  triggering_channel_id;
 	reg [1:0]  trigger_iter;
 	reg [15:0] current_time_stamp;
-	reg [1:0]  curIter [0:7];
+	reg [1:0]  curIter [0:7];								// use to record how many times the timestamp loop throught 0x0000 to 0xFFFF
 	reg [15:0] prevTS [0:7];
 	reg [15:0] pre_trigger_starts;	
 	wire[15:0] post_trigger_ending;	
@@ -51,8 +69,8 @@ module Threshold_Global_Coordinator(
 	
 	/* Logic to track iteration count
 	 * Synchronization for this is not essential 
-
 	*/
+	// use to record how many times the timestamp loop throught 0x0000 to 0xFFFF
 	always @ (posedge clk) begin 
 		if (!rst_n) begin 
 			for (ii = 0; ii < 8; ii = ii + 1) 
@@ -172,7 +190,7 @@ module Threshold_Global_Coordinator(
 						// Potential Problem:
 						// The time stamp is too short: 16 bit only range from 0~65535, need an extra counter of method to record real time
 						////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						if(current_time_stamp == post_trigger_ending && trigger_iter == end_iter)
+						if(current_time_stamp == post_trigger_ending && trigger_iter == end_iter)		// deal with the overflow on timestamp
 							begin
 							State <= WAIT_FOR_START;
 							threshold_decision_to_DRAM_ctrl <= 1'b0;
