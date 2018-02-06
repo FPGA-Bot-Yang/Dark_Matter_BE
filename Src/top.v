@@ -2,6 +2,8 @@ module top
 (
 	// Clock and reset		
 	input clkin_125,							// Programmable clk X5 (PIN U31)
+													// DRAM controller input reference clock
+													
 	input rst_n,								// Pin AK13, Button S3
 													// When pressed, rst_n = 0
 	
@@ -266,15 +268,15 @@ module top
 		.rx_datak(rx_datak_0),
 		.RX_reconfig_to_xcvr(ch0_0_to_xcvr),
 		.RX_reconfig_from_xcvr(ch0_0_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[0]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B0),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[0]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[0]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_0),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[0])	
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_0(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B0),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 		
@@ -300,15 +302,15 @@ module top
 		.rx_datak(rx_datak_1),
 		.RX_reconfig_to_xcvr(ch1_1_to_xcvr),
 		.RX_reconfig_from_xcvr(ch1_1_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[1]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B1),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[1]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[1]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_1),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[1])	
 		);
 	
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_1(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B1),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 		
@@ -333,15 +335,15 @@ module top
 		.rx_datak(rx_datak_2),
 		.RX_reconfig_to_xcvr(ch2_2_to_xcvr),
 		.RX_reconfig_from_xcvr(ch2_2_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[2]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B2),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[2]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[2]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_2),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[2])	
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_2(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B2),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 		
@@ -367,15 +369,15 @@ module top
 		.rx_datak(rx_datak_3),
 		.RX_reconfig_to_xcvr(ch3_3_to_xcvr),
 		.RX_reconfig_from_xcvr(ch3_3_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[3]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B3),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[3]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[3]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_3),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[3])	
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_3(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B3),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 		
@@ -401,15 +403,15 @@ module top
 		.rx_datak(rx_datak_4),
 		.RX_reconfig_to_xcvr(ch4_4_to_xcvr),
 		.RX_reconfig_from_xcvr(ch4_4_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[4]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B4),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[4]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[4]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_4),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[4])	
 		);
 
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_4(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B4),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 		
@@ -435,15 +437,15 @@ module top
 		.rx_datak(rx_datak_5),
 		.RX_reconfig_to_xcvr(ch5_5_to_xcvr),
 		.RX_reconfig_from_xcvr(ch5_5_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[5]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B5),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[5]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[5]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_5),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[5])	
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_5(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B5),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 	
@@ -469,15 +471,15 @@ module top
 		.rx_datak(rx_datak_6),
 		.RX_reconfig_to_xcvr(ch6_6_to_xcvr),
 		.RX_reconfig_from_xcvr(ch6_6_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[6]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B6),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[6]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[6]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_6),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[6])	
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_6(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B6),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 	
@@ -503,15 +505,15 @@ module top
 		.rx_datak(rx_datak_7),
 		.RX_reconfig_to_xcvr(ch7_7_to_xcvr),
 		.RX_reconfig_from_xcvr(ch7_7_from_xcvr),
-		.DRAM_RD_clk(avalon_clk),								// DRAM read clk for the buffer
-		.DRAM_RD_req(FIFO_rd_request[7]),								// DRAM read request
+		.DRAM_RD_clk(rx_std_clkout_B7),							// reorder buffer readout clk
+		.DRAM_RD_req(FIFO_rd_request[7]),						// reorder buffer read request
 		.RX_Buffer_empty(FIFO_empty[7]),							// Buffer empty
 		.Buffer_RD_Data(FIFO_RD_Data_7),							// Read out data to DRAM
 		.Buffer_Data_Ready(FIFO_ready_mask[7])	
 		);
 		
 	Channel_Data_Reorder_Buffer Channel_Data_Reorder_Buffer_7(
-		.inclk(clk_trans),
+		.inclk(rx_std_clkout_B7),
 		.outclk(avalon_clk),
 		.rst_n(rst_n),
 	
