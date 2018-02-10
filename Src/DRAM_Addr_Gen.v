@@ -130,13 +130,14 @@ module DRAM_Addr_Gen(
 					
 					waiting_counter <= 3'd0;				// counter used for generating waiting cycles
 					
-					if(board_sel == 4'd8)				// If arbitration gives no results
+					//if(board_sel == 4'd8)				// If arbitration gives no results
+					if(BRAM_ready_mask == 8'd0)			// If there's no reorder buffer is ready
 						begin
 						BRAM_rd_request <= 8'd0;
 						
 						state <= ARBITRATION;
 						end
-					else
+					else											// When there's at least one reorder buffer is ready, then the arbitor will make a selection and move on
 						begin
 						BRAM_rd_request <= arbitor;		// send out the request to reoder buffer one cycle early to make sure the data arrive in time
 						
