@@ -8,7 +8,7 @@
 // 4 BRAM modules stores the 2^18 bit address mask, write logic has not been implement yet
 
 module DRAM_Addr_Gen(
-	input				clk,
+	input					 clk,
 	input 			    rst_n,
 	
 	// signal for address mask
@@ -19,10 +19,10 @@ module DRAM_Addr_Gen(
 	input 			    triggering_status,	   // input from Threshold_Global_Coordinator
 	
 	// Signal to buffer
-	input	 [7:0]	    BRAM_ready_mask,			// bit mask for those ready BRAMs. Each connect to the RX_buf_ctrl module's Buffer_Data_Ready pin
-	input  [255:0]     BRAM_rd_data,
-	output reg [7:0]	 BRAM_rd_request,		   // bit mask for rd_request, each bit connect to RX_buf_ctrl module's DRAM_RD_req pin
-	output [2:0]		 BRAM_Sel,
+	input	 [7:0]	    BRAM_ready_mask,			// bit mask for those ready reorder buffers. Each connect to the Channel_Data_Reorder_Buffer module's BRAM_ready_mask pin
+	input  [255:0]     BRAM_rd_data,				// The readin data from reorder buffer
+	output reg [7:0]	 BRAM_rd_request,		   // bit mask for rd_request, each bit connect to Channel_Data_Reorder_Buffer module's BRAM_rd_request pin
+	output [2:0]		 BRAM_Sel,					// output the arbitration results to select from 1 of the 8 reorder buffers
 
 	// Signal to DRAM controller
 	input              DRAM_Wait_Request,
@@ -40,36 +40,29 @@ module DRAM_Addr_Gen(
 	parameter ARBITRATION    = 2'b00;
 	parameter READFIRSTDATA  = 2'b01;
 	parameter DRAMWRITE      = 2'b10;
+	parameter WAIT 			 = 2'b11;
 
-	
 	reg [1:0]  state;
 
-	/*
-	// counters for concatennating DRAM WR address
-	reg		  addr_MSB;
-	reg [1:0]  addr_timestamp_iteration;
-	reg [15:0] addr_timestamp;
-	reg [2:0]  addr_board_index;
-	reg [2:0]  addr_inpacket_index;
-	
-	assign DRAM_Write_Addr = {addr_MSB, addr_timestamp_iteration, addr_timestamp, addr_board_index, addr_inpacket_index};///////////////////PROBLEMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-	*/
-	
-	/*
-	// DRAM address bit mask
-	wire [17:0] mask_index;
-	assign mask_index = {addr_timestamp_iteration, addr_timestamp};
-	*/
-	
 	wire [3:0] board_sel;					// set as 4 bit so it can have extra value represents arbitration invalid(== 8)
 	assign BRAM_Sel = board_sel[2:0];
 	
 	reg [6:0] channel_sel;
 	reg [13:0] channel_offset;
-	assign DRAM_Write_Addr = {1'b0, BRAM_Sel, channel_sel, channel_offset};		// 0 MSB, 3 bit Board selection, 7 bit channel selection on each board, 14-bit channel offset based on sampling time
 	reg [13:0] prev_channel_offset [0:7];											// buffer the channel offset for each board, used for addressing when write data to DRAM
 	
-	reg        arbitor_enable;
+	// assign the channel_offset used for generating DRAM write address
+	always@(posedge clk)
+		begin
+		if(!rst_n)
+			channel_offset <= 14'd0;
+		else
+			channel_offset <= prev_channel_offset[BRAM_Sel];
+		end
+		
+	assign DRAM_Write_Addr = {1'b0, BRAM_Sel, channel_sel, channel_offset};		// 0 MSB, 3 bit Board selection, 7 bit channel selection on each board, 14-bit channel offset based on sampling time
+	
+	wire       arbitor_enable;
 	wire [7:0] arbitor;
 	
 	wire [4:0] MASK_dummy_output;
@@ -80,19 +73,8 @@ module DRAM_Addr_Gen(
 	
 	assign DDR_trans_done = (DRAM_Write_Counter == 8'd124)?1:0;
 
-	/*	
-	// Dummy logic to keep the RAM module
-	always@(posedge clk)
-		if(!rst_n)
-			MASK_output <= 1'b0;
-		else
-			case(addr_timestamp_iteration)
-				0: MASK_output = MASK_dummy_output[0];
-				1: MASK_output = MASK_dummy_output[1];
-				2: MASK_output = MASK_dummy_output[2];
-				3: MASK_output = MASK_dummy_output[3];
-			endcase
-	*/
+	reg [2:0] waiting_counter;			// counter used for generating waiting cycles
+
 	
 	Arbitor Arbitor(
 		.clk(clk),
@@ -102,48 +84,14 @@ module DRAM_Addr_Gen(
 		.output_mask(arbitor),
 		.board_sel(board_sel)
 	);
-/*	
-	BitMaskRAM BitMaskRAM_0(
-		.address(addr_timestamp),
-		.clock(clk),
-		.data(),
-		.wren(),
-		.q(MASK_dummy_output[0])
-	);
 	
-	BitMaskRAM BitMaskRAM_1(
-		.address(addr_timestamp),
-		.clock(clk),
-		.data(),
-		.wren(),
-		.q(MASK_dummy_output[1])
-	);
-	
-	BitMaskRAM BitMaskRAM_2(
-		.address(addr_timestamp),
-		.clock(clk),
-		.data(),
-		.wren(),
-		.q(MASK_dummy_output[2])
-	);
-	
-	BitMaskRAM BitMaskRAM_3(
-		.address(addr_timestamp),
-		.clock(clk),
-		.data(),
-		.wren(),
-		.q(MASK_dummy_output[3])
-	);
-*/	
-	
-	
-	
+	// enable arbitration only when state is ARBITRATION and the previous arbitration is a failure
+	// take this out of the statement machine: if in the state machine, there will be an extra cycle delay when deasserting the enable signal as the arbitor also take one cycle to generate result
+	assign arbitor_enable = (state == ARBITRATION) ? 1'b1 : 1'b0;
 	
 	always@(posedge clk)
 		if(!rst_n)
 			begin
-			arbitor_enable <= 1'b0;
-			
 			BRAM_rd_request <= 8'd0;
 			
 			DRAM_Write_Enable <= 1'b0;
@@ -151,13 +99,7 @@ module DRAM_Addr_Gen(
 			DRAM_Write_Burst_Count <= 5'd0;
 			DRAM_Write_Data <= 256'd0;
 			DRAM_Write_Counter <= 8'd0;
-			/*
-			addr_MSB <= 1'b0;
-			addr_timestamp_iteration <= 2'd0;
-			addr_timestamp <= 16'd0;
-			addr_board_index <= 3'd0;
-			addr_inpacket_index <= 3'd0;
-			*/
+
 			// signals for generating DRAM writing address
 			channel_sel <= 7'd0;
 			prev_channel_offset[0] <= 14'd0;
@@ -169,6 +111,8 @@ module DRAM_Addr_Gen(
 			prev_channel_offset[6] <= 14'd0;
 			prev_channel_offset[7] <= 14'd0;
 			
+			waiting_counter <= 3'd0;				// counter used for generating waiting cycles
+			
 			state <= ARBITRATION;
 			end
 		else
@@ -176,40 +120,36 @@ module DRAM_Addr_Gen(
 	      case(state)
 				ARBITRATION:
 					begin
-					arbitor_enable <= 1'b1;
-					
-					BRAM_rd_request <= 8'd0;
-			
 					DRAM_Write_Enable <= 1'b0;
 					DRAM_Write_Burst_Begin <= 1'b0;
 					DRAM_Write_Burst_Count <= 5'd0;
-					DRAM_Write_Data <= BRAM_rd_data;
+					DRAM_Write_Data <= 256'd0;
 					DRAM_Write_Counter <= 8'd0;
-					/*
-					addr_MSB <= 1'b0;
-					addr_timestamp_iteration <= addr_timestamp_iteration;
-					addr_timestamp <= 16'd0;
-					addr_board_index <= 3'd0;
-					addr_inpacket_index <= 3'd0;
-					*/
+
 					channel_sel <= 7'd0;
 					
+					waiting_counter <= 3'd0;				// counter used for generating waiting cycles
+					
 					if(board_sel == 4'd8)				// If arbitration gives no results
+						begin
+						BRAM_rd_request <= 8'd0;
+						
 						state <= ARBITRATION;
+						end
 					else
+						begin
+						BRAM_rd_request <= arbitor;		// send out the request to reoder buffer one cycle early to make sure the data arrive in time
+						
 						state <= READFIRSTDATA;
+						end
 						
 					end
 	/////////////////PROMBLEMMMMMMMMMMMMMMMMMMMMMM delay between BRAM_rd_request triggered to data come. different from fifo, may need some register to delay DRAM related signals to wait data. MUX in top also need delay
 				READFIRSTDATA:
 					begin
-					arbitor_enable <= 1'b0;
-					/*
-					addr_MSB <= 1'b0;
-					addr_board_index <= board_sel;
-					addr_inpacket_index <= 3'd0;
-					*/
 					channel_sel <= 7'd0;		// start from 0 for channel addressing
+					
+					waiting_counter <= 3'd0;				// counter used for generating waiting cycles
 					
 					if(DRAM_Wait_Request) 				// If DRAM is ready, then readout one data from BRAM
 						begin
@@ -220,14 +160,7 @@ module DRAM_Addr_Gen(
 						DRAM_Write_Burst_Count <= 5'd1;
 						DRAM_Write_Data <= BRAM_rd_data;
 						DRAM_Write_Counter <= DRAM_Write_Counter + 1'd1;
-						/*
-						addr_timestamp <= BRAM_rd_data[239:224];			// The 2nd 16bit word from the first DRAM words in the FE packet is the time stamp
-						if(addr_timestamp == 65535)
-							addr_timestamp_iteration <= addr_timestamp_iteration + 1'b1;
-						else
-							addr_timestamp_iteration <= addr_timestamp_iteration;
-						*/
-						
+
 						state <= DRAMWRITE;
 						end
 					else
@@ -239,22 +172,14 @@ module DRAM_Addr_Gen(
 						DRAM_Write_Burst_Count <= 5'd0;
 						DRAM_Write_Data <= BRAM_rd_data;
 						DRAM_Write_Counter <= DRAM_Write_Counter;
-						/*
-						addr_timestamp_iteration <= addr_timestamp_iteration;
-						addr_timestamp <= 16'd0;			// The 2nd 16bit word from the first DRAM words in the FE packet is the time stamp
-						*/
+
 						state <= READFIRSTDATA;
 						end
 					end
 					
 				DRAMWRITE:
 					begin
-					arbitor_enable <= 1'b0;
-					/*
-					addr_MSB <= 1'b0;
-					addr_timestamp_iteration <= addr_timestamp_iteration;
-					addr_board_index <= board_sel;
-					*/
+					waiting_counter <= 3'd0;				// counter used for generating waiting cycles
 					
 					if(DRAM_Wait_Request) 				// If DRAM is ready, then readout one data from BRAM
 						begin
@@ -265,12 +190,8 @@ module DRAM_Addr_Gen(
 						DRAM_Write_Burst_Count <= 5'd1;
 						DRAM_Write_Data <= BRAM_rd_data;
 						DRAM_Write_Counter <= DRAM_Write_Counter + 1'd1;
-						/*
-						addr_timestamp <= addr_timestamp;			// The 2nd 16bit word from the first DRAM words in the FE packet is the time stamp
-						addr_inpacket_index <= addr_inpacket_index + 1'b1;
-						*/
+						
 						channel_sel <= channel_sel + 1'b1;
-
 						end
 					else
 						begin
@@ -281,10 +202,7 @@ module DRAM_Addr_Gen(
 						DRAM_Write_Burst_Count <= 5'd0;
 						DRAM_Write_Data <= BRAM_rd_data;
 						DRAM_Write_Counter <= DRAM_Write_Counter;
-						/*
-						addr_timestamp <= addr_timestamp;
-						addr_inpacket_index <= addr_inpacket_index;
-						*/
+	
 						channel_sel <= channel_sel;
 						end
 						
@@ -297,7 +215,7 @@ module DRAM_Addr_Gen(
 						//////////////////////////////////////////////////////////////////////////////////////////////
 						prev_channel_offset[BRAM_Sel] <= prev_channel_offset[BRAM_Sel] + 1'b1;
 						
-						state <= ARBITRATION;
+						state <= WAIT;
 						end
 					else
 						begin
@@ -305,6 +223,27 @@ module DRAM_Addr_Gen(
 						
 						state <= DRAMWRITE;
 						end
+					end
+				
+				// Wait several cycles to let the reorder buffer clear the status signal before performing the next arbitration
+				WAIT:
+					begin
+					DRAM_Write_Enable <= 1'b0;
+					DRAM_Write_Burst_Begin <= 1'b0;
+					DRAM_Write_Burst_Count <= 5'd0;
+					DRAM_Write_Data <= 256'd0;
+					DRAM_Write_Counter <= 8'd0;
+
+					channel_sel <= 7'd0;
+					
+					BRAM_rd_request <= 8'd0;
+				
+					waiting_counter <= waiting_counter + 1'b1;				// counter used for generating waiting cycles
+					if(waiting_counter > 2)
+						state <= ARBITRATION;
+					else
+						state <= WAIT;
+						
 					end
 					
 			endcase

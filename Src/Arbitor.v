@@ -25,7 +25,7 @@ module Arbitor(
 		else arbitor <= arbitor;
 		end
 	
-	always@(posedge clk)
+	always@(*)
 		begin
 		if(!rst_n)
 			board_sel <= 8;
