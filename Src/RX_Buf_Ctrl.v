@@ -59,7 +59,7 @@ module RX_Buf_Ctrl(
 	
 	// When there's one or more buffer ready to be read, then the Buffer_RD_Ready signal is set
 	//assign Buffer_Data_Ready = (Buffer_RD_Ready != 0)? 1 : 0;
-	assign Buffer_Data_Ready = (Buffer_RD_Ready[RD_Buffer_Select] & ~RX_Buffer_empty) ? 1 : 0;
+	assign Buffer_Data_Ready = (Buffer_RD_Ready[RD_Buffer_Select] & ~RX_Buffer_empty) ? 1'b1 : 1'b0;
 	
 	/* Assign RX_Buffer_empty to reflect the state of the buffer indicated by RD_Buffer_Select */
 	assign RX_Buffer_empty = (RD_Buffer_Select) ? Buffer_empty[1] : Buffer_empty[0];

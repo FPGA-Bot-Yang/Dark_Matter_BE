@@ -40,7 +40,8 @@ module Arbitor(
 				8'b00010000: board_sel <= 4;
 				8'b00100000: board_sel <= 5;
 				8'b01000000: board_sel <= 6;
-				8'b10000000: board_sel <= 7;		
+				8'b10000000: board_sel <= 7;
+				default: board_sel <= 8;		// means invalid
 			endcase
 			end
 		end

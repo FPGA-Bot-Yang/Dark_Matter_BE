@@ -71,8 +71,7 @@ module Channel_Data_Reorder_Buffer(
 	reg [10:0] counter16;
 	reg [1:0] FULL_NUM;
 	
-	
-			
+	// assign output wires
 	assign FIFO_rd_request = FIFO_rd_request_r;
 	assign BRAM_ready_mask = BRAM_ready_mask_r;
 	

@@ -92,13 +92,19 @@ module DRAM_Addr_Gen_tb;
 				READY:
 					begin
 					BRAM_ready_mask <= BRAM_ready_mask;
-					BRAM_rd_data <= 256'd0;
+					
 					write_counter <= 8'd0;
 					
 					if(BRAM_rd_request[BRAM_Sel])
+						begin
+						BRAM_rd_data <= BRAM_rd_data + 1'b1;				// the first valid data should be 1
 						state <= WRITE_TO_DRAM;
+						end
 					else
+						begin
+						BRAM_rd_data <= BRAM_rd_data;
 						state <= READY;
+						end
 					end
 				WRITE_TO_DRAM:
 					begin

@@ -1,11 +1,19 @@
-// Module connect to: DRAM controller, RX_buf_ctrl, Threshold_Global_Coordinator
-
-// 1 FE packet = 128 * 16bit => 8 256bit DRAM words
-// 8 FE packet sampled at the same time = 64 DRAM words
-// Thus 6 LSB in address for in Sample Time Packet index
-// 25bit DRAM address space, but actually this should be 24bit, divide into: 1 MSB = 0 | 2 bit iteration counter of time stamp | 16 bit sample time | 3 bit board # index | 3 bit in FE pack index
-// 2 bit iteration counter of time stamp | 16 bit sample time will form the index to address dram address mask, dram addr mask size is 2^18
-// 4 BRAM modules stores the 2^18 bit address mask, write logic has not been implement yet
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// DRAM Write Controller:
+//		Perform arbitration based on the Reorder Buffer(RB) status and select from one of the 8 ready RB
+//		Read data from selected RB and write to related DRAM address
+//		Need to do: Replacement scheme
+// By: Chen Yang
+// Update: 02/12/2018
+//
+// Module connect to: DRAM controller, Channel_Data_Reorder_Buffer, Threshold_Global_Coordinator
+//
+// Data in RB is organized based on sampled channels, each RB contains data from 125 channels
+// Each readout data from RB consists of 16 data samples from a single channel
+// DRAM address space is 25 bit: {1'b0, BRAM_Sel, channel_sel, in_channel_offset} 0 MSB, 3 bit Board selection, 7 bit channel selection on each board, 14-bit channel offset based on sampling time
+//	When data coming in from RB, the fist data is always timestamp, the timestamp is also written into the DRAM, with the address being: {1'b0, 3'BRAM_Sel, 7'd0, in_channel_offset}
+// When performing replacement, only consider the first data's sampling time in a single DRAM word
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 module DRAM_Addr_Gen(
 	input					 clk,
@@ -29,7 +37,7 @@ module DRAM_Addr_Gen(
 	output reg         DRAM_Write_Enable,
 	output reg         DRAM_Write_Burst_Begin,
 	output reg [4:0]   DRAM_Write_Burst_Count,
-	output     [24:0]  DRAM_Write_Addr,
+	output reg [24:0]  DRAM_Write_Addr,			//{1'b0, BRAM_Sel, channel_sel, in_channel_offset} 0 MSB, 3 bit Board selection, 7 bit channel selection on each board, 14-bit channel offset based on sampling time
 	output reg [255:0] DRAM_Write_Data,
 	
 	// dummy output for address mask
@@ -37,30 +45,30 @@ module DRAM_Addr_Gen(
 );
 
 
-	parameter ARBITRATION    = 2'b00;
-	parameter READFIRSTDATA  = 2'b01;
-	parameter DRAMWRITE      = 2'b10;
-	parameter WAIT 			 = 2'b11;
+	parameter ARBITRATION     = 3'b000;
+	parameter READFIRSTDATA   = 3'b001;
+	parameter DRAMWRITE       = 3'b010;
+	parameter WAIT 			  = 3'b011;
 
-	reg [1:0]  state;
+	reg [2:0]  state;
 
 	wire [3:0] board_sel;					// set as 4 bit so it can have extra value represents arbitration invalid(== 8)
 	assign BRAM_Sel = board_sel[2:0];
 	
 	reg [6:0] channel_sel;
-	reg [13:0] channel_offset;
-	reg [13:0] prev_channel_offset [0:7];											// buffer the channel offset for each board, used for addressing when write data to DRAM
+	reg [13:0] in_channel_offset;
+	reg [13:0] prev_in_channel_offset [0:7];											// buffer the channel offset for each board, used for addressing when write data to DRAM
 	
-	// assign the channel_offset used for generating DRAM write address
+	// assign the in_channel_offset used for generating DRAM write address
 	always@(posedge clk)
 		begin
 		if(!rst_n)
-			channel_offset <= 14'd0;
+			in_channel_offset <= 14'd0;
 		else
-			channel_offset <= prev_channel_offset[BRAM_Sel];
+			in_channel_offset <= prev_in_channel_offset[BRAM_Sel];
 		end
 		
-	assign DRAM_Write_Addr = {1'b0, BRAM_Sel, channel_sel, channel_offset};		// 0 MSB, 3 bit Board selection, 7 bit channel selection on each board, 14-bit channel offset based on sampling time
+	//assign DRAM_Write_Addr = {1'b0, BRAM_Sel, channel_sel, in_channel_offset};		// 0 MSB, 3 bit Board selection, 7 bit channel selection on each board, 14-bit channel offset based on sampling time
 	
 	wire       arbitor_enable;
 	wire [7:0] arbitor;
@@ -71,7 +79,7 @@ module DRAM_Addr_Gen(
 	reg [7:0] DRAM_Write_Counter;
 	wire DDR_trans_done;
 	
-	assign DDR_trans_done = (DRAM_Write_Counter == 8'd124)?1:0;
+	assign DDR_trans_done = (DRAM_Write_Counter == 8'd124)? 1'b1: 1'b0;
 
 	reg [2:0] waiting_counter;			// counter used for generating waiting cycles
 
@@ -92,24 +100,18 @@ module DRAM_Addr_Gen(
 	always@(posedge clk)
 		if(!rst_n)
 			begin
-			BRAM_rd_request <= 8'd0;
-			
-			DRAM_Write_Enable <= 1'b0;
-			DRAM_Write_Burst_Begin <= 1'b0;
-			DRAM_Write_Burst_Count <= 5'd0;
-			DRAM_Write_Data <= 256'd0;
 			DRAM_Write_Counter <= 8'd0;
 
 			// signals for generating DRAM writing address
 			channel_sel <= 7'd0;
-			prev_channel_offset[0] <= 14'd0;
-			prev_channel_offset[1] <= 14'd0;
-			prev_channel_offset[2] <= 14'd0;
-			prev_channel_offset[3] <= 14'd0;
-			prev_channel_offset[4] <= 14'd0;
-			prev_channel_offset[5] <= 14'd0;
-			prev_channel_offset[6] <= 14'd0;
-			prev_channel_offset[7] <= 14'd0;
+			prev_in_channel_offset[0] <= 14'd0;
+			prev_in_channel_offset[1] <= 14'd0;
+			prev_in_channel_offset[2] <= 14'd0;
+			prev_in_channel_offset[3] <= 14'd0;
+			prev_in_channel_offset[4] <= 14'd0;
+			prev_in_channel_offset[5] <= 14'd0;
+			prev_in_channel_offset[6] <= 14'd0;
+			prev_in_channel_offset[7] <= 14'd0;
 			
 			waiting_counter <= 3'd0;				// counter used for generating waiting cycles
 			
@@ -120,107 +122,65 @@ module DRAM_Addr_Gen(
 	      case(state)
 				ARBITRATION:
 					begin
-					DRAM_Write_Enable <= 1'b0;
-					DRAM_Write_Burst_Begin <= 1'b0;
-					DRAM_Write_Burst_Count <= 5'd0;
-					DRAM_Write_Data <= 256'd0;
 					DRAM_Write_Counter <= 8'd0;
-
 					channel_sel <= 7'd0;
-					
 					waiting_counter <= 3'd0;				// counter used for generating waiting cycles
 					
 					//if(board_sel == 4'd8)				// If arbitration gives no results
 					if(BRAM_ready_mask == 8'd0)			// If there's no reorder buffer is ready
 						begin
-						BRAM_rd_request <= 8'd0;
-						
 						state <= ARBITRATION;
 						end
 					else											// When there's at least one reorder buffer is ready, then the arbitor will make a selection and move on
 						begin
-						BRAM_rd_request <= arbitor;		// send out the request to reoder buffer one cycle early to make sure the data arrive in time
-						
 						state <= READFIRSTDATA;
 						end
 						
 					end
-	/////////////////PROMBLEMMMMMMMMMMMMMMMMMMMMMM delay between BRAM_rd_request triggered to data come. different from fifo, may need some register to delay DRAM related signals to wait data. MUX in top also need delay
+				
+				// There's one cycle delay for arbitor generating arbitration results
+				// At this point, the arbitration result is generated, assign the read request signal to the selected Reorder Buffer
+				// There's also one cycle delay for fetching data from reorder buffer
+				// At the end of this state, the data has been pre-fetched from Reorder Buffer
 				READFIRSTDATA:
 					begin
-					channel_sel <= 7'd0;		// start from 0 for channel addressing
-					
+					// Do not write anything to DRAM
+					DRAM_Write_Counter <= 8'd0;
+					channel_sel <= 7'd0;
 					waiting_counter <= 3'd0;				// counter used for generating waiting cycles
-					
-					if(DRAM_Wait_Request) 				// If DRAM is ready, then readout one data from BRAM
-						begin
-						BRAM_rd_request <= arbitor;		// read one data from BRAM
-						
-						DRAM_Write_Enable <= 1'b1;
-						DRAM_Write_Burst_Begin <= 1'b1;
-						DRAM_Write_Burst_Count <= 5'd1;
-						DRAM_Write_Data <= BRAM_rd_data;
-						DRAM_Write_Counter <= DRAM_Write_Counter + 1'd1;
 
-						state <= DRAMWRITE;
-						end
-					else
-						begin
-						BRAM_rd_request <= 8'd0;		// do not read data from BRAM if DRAM not ready to write
-						
-						DRAM_Write_Enable <= 1'b0;
-						DRAM_Write_Burst_Begin <= 1'b0;
-						DRAM_Write_Burst_Count <= 5'd0;
-						DRAM_Write_Data <= BRAM_rd_data;
-						DRAM_Write_Counter <= DRAM_Write_Counter;
-
-						state <= READFIRSTDATA;
-						end
+					state <= DRAMWRITE;
 					end
-					
+				
 				DRAMWRITE:
 					begin
 					waiting_counter <= 3'd0;				// counter used for generating waiting cycles
 					
-					if(DRAM_Wait_Request) 				// If DRAM is ready, then readout one data from BRAM
+					if(DRAM_Wait_Request) 					// If DRAM is ready, then readout one data from BRAM
 						begin
-						BRAM_rd_request <= arbitor;		// read one data from BRAM
-						
-						DRAM_Write_Enable <= 1'b1;
-						DRAM_Write_Burst_Begin <= 1'b1;
-						DRAM_Write_Burst_Count <= 5'd1;
-						DRAM_Write_Data <= BRAM_rd_data;
 						DRAM_Write_Counter <= DRAM_Write_Counter + 1'd1;
-						
 						channel_sel <= channel_sel + 1'b1;
 						end
 					else
 						begin
-						BRAM_rd_request <= 8'd0;		// do not read data from BRAM if DRAM not ready to write
-						
-						DRAM_Write_Enable <= 1'b0;
-						DRAM_Write_Burst_Begin <= 1'b0;
-						DRAM_Write_Burst_Count <= 5'd0;
-						DRAM_Write_Data <= BRAM_rd_data;
 						DRAM_Write_Counter <= DRAM_Write_Counter;
-	
 						channel_sel <= channel_sel;
 						end
 						
-					if((DDR_trans_done == 1)&&(DRAM_Wait_Request == 1))
+					if((DDR_trans_done == 1'b1)&&(DRAM_Wait_Request == 1'b1))
 						begin
 						//////////////////////////////////////////////////////////////////////////////////////////////
 						// ???????????????????????????????????????????????????????????????????????????????????????????
 						// increment the channel offset for next interation when this round of writing is finish
 						// if considering replacement, need to add more logic here, more than just increment by 1
 						//////////////////////////////////////////////////////////////////////////////////////////////
-						prev_channel_offset[BRAM_Sel] <= prev_channel_offset[BRAM_Sel] + 1'b1;
+						prev_in_channel_offset[BRAM_Sel] <= prev_in_channel_offset[BRAM_Sel] + 1'b1;
 						
 						state <= WAIT;
 						end
 					else
 						begin
-						prev_channel_offset[BRAM_Sel] <= prev_channel_offset[BRAM_Sel];
+						prev_in_channel_offset[BRAM_Sel] <= prev_in_channel_offset[BRAM_Sel];
 						
 						state <= DRAMWRITE;
 						end
@@ -229,26 +189,95 @@ module DRAM_Addr_Gen(
 				// Wait several cycles to let the reorder buffer clear the status signal before performing the next arbitration
 				WAIT:
 					begin
-					DRAM_Write_Enable <= 1'b0;
-					DRAM_Write_Burst_Begin <= 1'b0;
-					DRAM_Write_Burst_Count <= 5'd0;
-					DRAM_Write_Data <= 256'd0;
 					DRAM_Write_Counter <= 8'd0;
-
 					channel_sel <= 7'd0;
-					
-					BRAM_rd_request <= 8'd0;
-				
 					waiting_counter <= waiting_counter + 1'b1;				// counter used for generating waiting cycles
 					if(waiting_counter > 2)
 						state <= ARBITRATION;
 					else
 						state <= WAIT;
-						
 					end
-					
+
 			endcase
 			end
 
+	// Assign the DRAM control signal based on the status of the FSM
+	always@(*)
+		begin
+		if(!rst_n)
+			begin
+			BRAM_rd_request <= 8'd0;
+			
+			DRAM_Write_Enable <= 1'b0;
+			DRAM_Write_Burst_Begin <= 1'b0;
+			DRAM_Write_Burst_Count <= 5'd0;
+			DRAM_Write_Addr <= 25'd0;
+			DRAM_Write_Data <= 256'd0;
+			end
+		else
+			begin
+			case(state)
+			ARBITRATION:
+				begin
+				BRAM_rd_request <= 8'd0;
+				
+				DRAM_Write_Enable <= 1'b0;
+				DRAM_Write_Burst_Begin <= 1'b0;
+				DRAM_Write_Burst_Count <= 5'd0;
+				DRAM_Write_Addr <= 25'd0;
+				DRAM_Write_Data <= 256'd0;
+				end
+			READFIRSTDATA:
+				begin
+				// at this point, arbitration result is generated, thus send out the read request to the selected Reorder Buffer and prefetch the data 
+				BRAM_rd_request <= arbitor;
+				
+				DRAM_Write_Enable <= 1'b0;
+				DRAM_Write_Burst_Begin <= 1'b0;
+				DRAM_Write_Burst_Count <= 5'd0;
+				DRAM_Write_Addr <= 25'd0;
+				DRAM_Write_Data <= 256'd0;
+				end
+			DRAMWRITE:
+				begin
+				if(DRAM_Wait_Request)
+					begin
+					// read the next data from BRAM
+					// While the previously fetched data from Reorder Buffer is written into DRAM
+					BRAM_rd_request <= arbitor;	
+					
+					DRAM_Write_Enable <= 1'b1;
+					DRAM_Write_Burst_Begin <= 1'b1;
+					DRAM_Write_Burst_Count <= 5'd1;
+					DRAM_Write_Addr = {1'b0, BRAM_Sel, channel_sel, in_channel_offset};
+					DRAM_Write_Data <= BRAM_rd_data;
+					end
+				else
+					begin
+					// do not read data from Reorder Buffer if DRAM not ready to write
+					BRAM_rd_request <= 8'd0;
+					
+					DRAM_Write_Enable <= 1'b0;
+					DRAM_Write_Burst_Begin <= 1'b0;
+					DRAM_Write_Burst_Count <= 5'd0;
+					DRAM_Write_Addr <= 25'd0;
+					DRAM_Write_Data <= 256'd0;
+					end
+				end
+			WAIT:
+				begin
+				BRAM_rd_request <= 8'd0;
+				
+				DRAM_Write_Enable <= 1'b0;
+				DRAM_Write_Burst_Begin <= 1'b0;
+				DRAM_Write_Burst_Count <= 5'd0;
+				DRAM_Write_Addr <= 25'd0;
+				DRAM_Write_Data <= 256'd0;
+				end
+			
+			endcase
+			end
+		
+		end
 
 endmodule
