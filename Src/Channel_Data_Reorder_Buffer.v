@@ -65,6 +65,7 @@ module Channel_Data_Reorder_Buffer(
 	reg BRAM_FULL_x;
 	reg BRAM_FULL_x_d;
 	wire DDR_trans_done;
+	reg prev_DDR_trans_done;
 	reg [11:0] counter2048;
 	reg [7:0] counter128;
 	reg [7:0] counter_DDR;
@@ -145,19 +146,22 @@ module Channel_Data_Reorder_Buffer(
 	// The number of buffers that is currently full and ready to write to DRAM, ranging from 0~2
 	// Only write to DRAM when is number is larger than 0
 	always@(posedge inclk)
+		begin
+		// recording the rising edge of DDR_trans_done
+		// suppose the outclk is slower than the inclk, then the rising edge will be captured here and use that as the case to reduce the FULL_NUM
+		prev_DDR_trans_done <= DDR_trans_done;
+		
 		if(!rst_n)
-			begin
 			FULL_NUM <= 0;
-			end
 		else if ((BRAM_FULL_x == 1'd1) && (BRAM_FULL_x_d == 1'd0))
-			begin
 			FULL_NUM <= FULL_NUM + 1'd1;
-			end
-		else if (counter_DDR == 8'd125)
+		// when the DDR_trans_done generate a rising edge, signifies a transfer is done and thus reduce the FULL_NUM
+		else if (!prev_DDR_trans_done && DDR_trans_done)
 			FULL_NUM <= FULL_NUM - 1'd1;
 		else	
 			FULL_NUM <= FULL_NUM;
-	
+		end
+		
 	always@(posedge inclk)
 		if(!rst_n)
 			begin

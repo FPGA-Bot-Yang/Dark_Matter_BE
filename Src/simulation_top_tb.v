@@ -85,6 +85,8 @@ module simulation_top_tb;
 	reg[7:0] packet_counter;
 	reg [15:0] time_stamp;
 	
+	reg[19:0] gap_counter;
+	
 	parameter HEADER = 3'd0;
 	parameter TIMESTAMP = 3'd1;
 	parameter PACKET_PAYLOAD = 3'd2;
@@ -97,6 +99,7 @@ module simulation_top_tb;
 			FIFO_rd_data <= 16'h0000;
 			input_iteration <= 8'd0;
 			packet_counter <= 8'd0;
+			gap_counter <= 20'd0;
 			time_stamp <= 16'd10;
 			
 			state <= HEADER;
@@ -109,6 +112,7 @@ module simulation_top_tb;
 					FIFO_rd_data <= 16'hDEAD;
 					input_iteration <= input_iteration;
 					packet_counter <= 8'd0;
+					gap_counter <= 20'd0;
 					time_stamp <= time_stamp;
 					
 					state <= TIMESTAMP;
@@ -118,6 +122,7 @@ module simulation_top_tb;
 					FIFO_rd_data <= time_stamp;
 					input_iteration <= input_iteration;
 					packet_counter <= 8'd0;
+					gap_counter <= 20'd0;
 					time_stamp <= time_stamp + 1'b1;
 					
 					state <= PACKET_PAYLOAD;
@@ -127,6 +132,7 @@ module simulation_top_tb;
 					FIFO_rd_data <= {input_iteration, packet_counter};
 					input_iteration <= input_iteration;
 					packet_counter <= packet_counter + 1'b1;
+					gap_counter <= 20'd0;
 					time_stamp <= time_stamp;
 					if(packet_counter < 8'd124)
 						state <= PACKET_PAYLOAD;
@@ -138,6 +144,7 @@ module simulation_top_tb;
 					FIFO_rd_data <= 16'hBEEF;
 					input_iteration <= input_iteration + 1'b1;
 					packet_counter <= 8'd0;
+					gap_counter <= 20'd0;
 					time_stamp <= time_stamp;
 					state <= WAITING_GAP;
 					end
@@ -145,9 +152,10 @@ module simulation_top_tb;
 					begin
 					FIFO_rd_data <= 16'h0000;
 					input_iteration <= input_iteration;
-					packet_counter <= packet_counter + 1'b1;		// reuse packet_counter here to generate a gap 
+					packet_counter <= 8'd0;
+					gap_counter <= gap_counter + 1'b1;
 					time_stamp <= time_stamp;
-					if(packet_counter <= 20)
+					if((input_iteration <= 16'h0F && gap_counter <= 20) || (input_iteration > 16'h0F && gap_counter <= 2000))		// generate a longer gap when the first set of data has filled the Reorder Buffer
 						state <= WAITING_GAP;
 					else
 						state <= HEADER;
@@ -193,7 +201,7 @@ module simulation_top_tb;
 		START <= 1'b1;
 
 		
-		#22000
+		#32000
 		$stop;
 			
 	end 
