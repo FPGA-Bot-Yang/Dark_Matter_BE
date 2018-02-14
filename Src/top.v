@@ -1,13 +1,37 @@
 module top
 (
-	// Clock and reset		
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// CLOCK AND RESET
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// DRAM Controller clock
 	input clkin_125,							// Programmable clk X5 (PIN U31)
 													// DRAM controller input reference clock
-													
+	// Transciever clock
+	input clk_trans,							// Transciever ref clock (R11) Programmable clk X4, set as 125 MHz			
+	// BackEnd reset
 	input rst_n,								// Pin AK13, Button S3
 													// When pressed, rst_n = 0
+	// Reset signal to FE Board
+	output rst_n_B1_cycloneIV,					// Output reset signal connect to HSMCA-HSM_D3 (K12) 
+														// HSMCA PIN 6
+	output rst_n_B3_cycloneIV,					// Output reset signal connect to HSMCA-HSM_D2 (F12) 
+														// HSMCA PIN 5
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// TRANSCEIVER RX PINs
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	input	SMA_GXB_RX_B0_p,						// HSMCB RX0, P:N2, N:N1
+	input SMA_GXB_RX_B1_p,						// HSMCB RX1, P:L2, N:L1
+	input SMA_GXB_RX_B2_p,						// HSMCB RX2, P:J2, N:J1
+	input SMA_GXB_RX_B3_p,						// HSMCB RX3, P:G2, N:G1
 	
+	input	SMA_GXB_RX_B4_p,						// HSMCA RX0, P:AA2, N:AA1
+	input SMA_GXB_RX_B5_p,						// HSMCA RX1, P:W2, N:W1
+	input SMA_GXB_RX_B6_p,						// HSMCA RX2, P:U2, N:U1
+	input SMA_GXB_RX_B7_p,						// HSMCA RX3, P:R2, N:R1
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DRAM PINs
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	output [13:0] ddr3b_a,
 	output [2:0] ddr3b_ba,
 	output ddr3b_casn,
@@ -25,42 +49,26 @@ module top
 	output ddr3b_wen,								// PIN AM34
 	input rzqin_1_5v,								// PIN AP19
 	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// MISC IN/OUT SIGNALS
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	input DRAM_read_address,
 	output MASK_output,					      // Stop bit mask being trucated
-	
 	// Triggering status
-	output triggering_status,
-	
-	// Transciever PINs
-	input clk_trans,								// Transciever ref clock (R11) Programmable clk X4, set as 125 MHz
-	
-	// Reset signal to FE Board
-	output rst_n_B1_cycloneIV,					// Output reset signal connect to HSMCA-HSM_D3 (K12) 
-														// HSMCA PIN 6
-	output rst_n_B3_cycloneIV,					// Output reset signal connect to HSMCA-HSM_D2 (F12) 
-														// HSMCA PIN 5
-	// Transceiver RX port input
-	input	SMA_GXB_RX_B0_p,						// HSMCB RX0, P:N2, N:N1
-	input SMA_GXB_RX_B1_p,						// HSMCB RX1, P:L2, N:L1
-	input SMA_GXB_RX_B2_p,						// HSMCB RX2, P:J2, N:J1
-	input SMA_GXB_RX_B3_p,						// HSMCB RX3, P:G2, N:G1
-	
-	input	SMA_GXB_RX_B4_p,						// HSMCA RX0, P:AA2, N:AA1
-	input SMA_GXB_RX_B5_p,						// HSMCA RX1, P:W2, N:W1
-	input SMA_GXB_RX_B6_p,						// HSMCA RX2, P:U2, N:U1
-	input SMA_GXB_RX_B7_p						// HSMCA RX3, P:R2, N:R1
+	output triggering_status
 );
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Output Signals
+	// Output Reset Signals
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	assign rst_n_B1_cycloneIV = rst_n;
 	assign rst_n_B3_cycloneIV = rst_n;
 
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	// RX Signals
+	// RX Transceiver Signals
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	wire				reconfig_busy;
 	wire [69:0]		ch0_0_to_xcvr;
@@ -121,7 +129,7 @@ module top
 	wire [15:0]    triggering_time_stamp;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Trigger 
+	// Triggering Logic
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	Thresholder_top_direct Threshold(
 		.rst_n(rst_n),										// reset signal, reset on low
@@ -254,7 +262,7 @@ module top
 
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Transceiver and Buffer module
+	// Transceiver Module and Reorder Buffer
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Transceiver RX for Board 0
 	Trans_RX B0_RX(
@@ -578,7 +586,9 @@ module top
 		.ch7_7_from_xcvr(ch7_7_from_xcvr)
 		);	
 	
-		
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	// DRAM Control Module
+	////////////////////////////////////////////////////////////////////////////////////////////////////		
 	// DRAM Controller
 	dma_mem dma_mem_inst(
 		.ddr3_top_memory_mem_a		 						(ddr3b_a),
@@ -616,16 +626,16 @@ module top
 		.sdram_pll_sharing_pll_avl_phy_clk           (),
 
 		.sdram_afi_clk_clk									(avalon_clk),
-		.sdram_avl_read										(read),                    //                     .read
-		.sdram_avl_write										(DRAM_Write_Enable),                   //                     .write
-		.sdram_avl_address									(DRAM_WR_address),                 //                     .address
-		.sdram_avl_writedata									(DRAM_Write_Data),              //                     .writedata
-		.sdram_avl_burstcount								(DRAM_Write_Burst_Count),             //                     .burstcount
-		.sdram_avl_beginbursttransfer						(DRAM_Write_Burst_Begin),             //                     .beginbursttransfer
+		.sdram_avl_read										(read),										//.read
+		.sdram_avl_write										(DRAM_Write_Enable),                //.write
+		.sdram_avl_address									(DRAM_WR_address),                  //.address
+		.sdram_avl_writedata									(DRAM_Write_Data),                  //.writedata
+		.sdram_avl_burstcount								(DRAM_Write_Burst_Count),           //.burstcount
+		.sdram_avl_beginbursttransfer						(DRAM_Write_Burst_Begin),           //.beginbursttransfer
 
-		.sdram_avl_waitrequest_n							(DRAM_Wait_Request),            //							  .sdram_avl.waitrequest_n
-		.sdram_avl_readdata									(read_data),               //                     .readdata
-		.sdram_avl_readdatavalid							(read_valid)              //                     .readdatavalid
+		.sdram_avl_waitrequest_n							(DRAM_Wait_Request),                //.sdram_avl.waitrequest_n
+		.sdram_avl_readdata									(read_data),                        //.readdata
+		.sdram_avl_readdatavalid							(read_valid)                        //.readdatavalid
 		);
 
 endmodule
