@@ -18,7 +18,7 @@
 	input 				DRAM_RD_clk,								// DRAM read clk for the buffer
 	input					DRAM_RD_req,								// DRAM read request
 	output				RX_Buffer_empty,							// Buffer empty
-	output [5:0]		Buffer_RD_Data,							// Read out data to DRAM
+	output [15:0]		Buffer_RD_Data,							// Read out data to DRAM
 	output				Buffer_Data_Ready							// Signal to let DRAM know the data is ready			
 	);
 
