@@ -2,7 +2,7 @@ set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_TOOL_NAME "Q
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_TOOL_VERSION "14.1"
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "dma_mem" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../dma_mem.sopcinfo"]
-set_global_assignment -entity "dma_mem" -library "dma_mem" -name SLD_INFO "QSYS_NAME dma_mem HAS_SOPCINFO 1 GENERATION_ID 1496787713"
+set_global_assignment -entity "dma_mem" -library "dma_mem" -name SLD_INFO "QSYS_NAME dma_mem HAS_SOPCINFO 1 GENERATION_ID 1477509544"
 set_global_assignment -library "dma_mem" -name MISC_FILE [file join $::quartus(qip_path) "../dma_mem.cmp"]
 set_global_assignment -library "dma_mem" -name SLD_FILE [file join $::quartus(qip_path) "dma_mem.debuginfo"]
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
@@ -15,7 +15,7 @@ set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_DI
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTQ5Njc4NzcxMw==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTQ3NzUwOTU0NA==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNHVEZEOUU1RjM1Qzc=::QXV0byBERVZJQ0U="
 set_global_assignment -entity "dma_mem" -library "dma_mem" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::N19INQ==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="

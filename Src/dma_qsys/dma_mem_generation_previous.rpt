@@ -1,6 +1,6 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: ip-generate --project-directory="E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024" --output-directory="E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys" --report-file="bsf:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\dma_mem.bsf" --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file="E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_mem.qsys" --remove-qsys-generate-warning
-Progress: Loading Ethan_BE_DRAM_1024/dma_mem.qsys
+Info: ip-generate --project-directory=D:\Quartus_projects\dma_mem --output-directory=D:\Quartus_projects\dma_mem\dma_qsys --report-file=bsf:D:\Quartus_projects\dma_mem\dma_qsys\dma_mem.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file=D:\Quartus_projects\dma_mem\dma_mem.qsys --remove-qsys-generate-warning
+Progress: Loading dma_mem/dma_mem.qsys
 Progress: Reading input file
 Progress: Adding Avalon_master [master_template 1.0]
 Progress: Parameterizing module Avalon_master
@@ -36,8 +36,8 @@ Info: ip-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: ip-generate --project-directory="E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024" --output-directory="E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\synthesis" --file-set=QUARTUS_SYNTH --report-file="html:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\dma_mem.html" --report-file="sopcinfo:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_mem.sopcinfo" --report-file="cmp:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\dma_mem.cmp" --report-file="qip:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\synthesis\dma_mem.qip" --report-file="svd:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\synthesis\dma_mem.svd" --report-file="regmap:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\synthesis\dma_mem.regmap" --report-file="xml:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\dma_mem.xml" --report-file="debuginfo:E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_qsys\synthesis\dma_mem.debuginfo" --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file="E:\Research Files\DarkMatter\Ethan_BE_DRAM_1024\dma_mem.qsys" --remove-qsys-generate-warning --language=VERILOG
-Progress: Loading Ethan_BE_DRAM_1024/dma_mem.qsys
+Info: ip-generate --project-directory=D:\Quartus_projects\dma_mem --output-directory=D:\Quartus_projects\dma_mem\dma_qsys\synthesis --file-set=QUARTUS_SYNTH --report-file=html:D:\Quartus_projects\dma_mem\dma_qsys\dma_mem.html --report-file=sopcinfo:D:\Quartus_projects\dma_mem\dma_mem.sopcinfo --report-file=cmp:D:\Quartus_projects\dma_mem\dma_qsys\dma_mem.cmp --report-file=qip:D:\Quartus_projects\dma_mem\dma_qsys\synthesis\dma_mem.qip --report-file=svd:D:\Quartus_projects\dma_mem\dma_qsys\synthesis\dma_mem.svd --report-file=regmap:D:\Quartus_projects\dma_mem\dma_qsys\synthesis\dma_mem.regmap --report-file=xml:D:\Quartus_projects\dma_mem\dma_qsys\dma_mem.xml --report-file=debuginfo:D:\Quartus_projects\dma_mem\dma_qsys\synthesis\dma_mem.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CGTFD9E5F35C7 --system-info=DEVICE_SPEEDGRADE=7_H5 --component-file=D:\Quartus_projects\dma_mem\dma_mem.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading dma_mem/dma_mem.qsys
 Progress: Reading input file
 Progress: Adding Avalon_master [master_template 1.0]
 Progress: Parameterizing module Avalon_master
