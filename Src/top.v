@@ -181,10 +181,10 @@ module top
 	// DRAM Signals
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	wire avalon_clk;
-	reg read;
+	wire DRAM_Read_Enable;
 	// DRAM Testing Signals
-	wire [255:0] read_data;
-	wire read_valid;
+	wire [255:0] DRAM_Read_data;
+	wire DRAM_Read_valid;
 	
 	// DRAM Controller signal
 	wire [7:0] FIFO_ready_mask;
@@ -626,7 +626,7 @@ module top
 		.sdram_pll_sharing_pll_avl_phy_clk           (),
 
 		.sdram_afi_clk_clk									(avalon_clk),
-		.sdram_avl_read										(read),										//.read
+		.sdram_avl_read										(DRAM_Read_Enable),						//.read
 		.sdram_avl_write										(DRAM_Write_Enable),                //.write
 		.sdram_avl_address									(DRAM_WR_address),                  //.address
 		.sdram_avl_writedata									(DRAM_Write_Data),                  //.writedata
@@ -634,8 +634,8 @@ module top
 		.sdram_avl_beginbursttransfer						(DRAM_Write_Burst_Begin),           //.beginbursttransfer
 
 		.sdram_avl_waitrequest_n							(DRAM_Wait_Request),                //.sdram_avl.waitrequest_n
-		.sdram_avl_readdata									(read_data),                        //.readdata
-		.sdram_avl_readdatavalid							(read_valid)                        //.readdatavalid
+		.sdram_avl_readdata									(DRAM_Read_Data),                   //.readdata
+		.sdram_avl_readdatavalid							(DRAM_Read_Valid)                   //.readdatavalid
 		);
 
 endmodule
