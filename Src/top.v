@@ -53,6 +53,7 @@ module top
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MISC IN/OUT SIGNALS
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	input DRAM_read_address,
 	output MASK_output,					      // Stop bit mask being trucated
 	// Triggering status
 	output triggering_status
@@ -180,10 +181,10 @@ module top
 	// DRAM Signals
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	wire avalon_clk;
-	wire DRAM_Read_Enable;
+	reg read;
 	// DRAM Testing Signals
-	wire [255:0] DRAM_Read_Data;
-	wire DRAM_Read_Valid;
+	wire [255:0] read_data;
+	wire read_valid;
 	
 	// DRAM Controller signal
 	wire [7:0] FIFO_ready_mask;
@@ -247,17 +248,13 @@ module top
 		.BRAM_rd_data(Selected_Data_to_DRAM),
 		.BRAM_rd_request(BRAM_rd_request),		   // bit mask for rd_request, each bit connect to Channel_Data_Reorder_Buffer module's BRAM_rd_request pin
 		.BRAM_Sel(BRAM_Sel),
-		// Signals for DRAM write control
+		// Signal to DRAM controller
 		.DRAM_Wait_Request(DRAM_Wait_Request),
 		.DRAM_Write_Enable(DRAM_Write_Enable),
 		.DRAM_Write_Burst_Begin(DRAM_Write_Burst_Begin),
 		.DRAM_Write_Burst_Count(DRAM_Write_Burst_Count),
 		.DRAM_Write_Addr(DRAM_WR_address),
 		.DRAM_Write_Data(DRAM_Write_Data),
-		// Signals for DRAM read control (test use only)
-		.DRAM_Read_Enable(DRAM_Read_Enable),
-		.DRAM_Read_Data(DRAM_Read_Data),
-		.DRAM_Read_Valid(DRAM_Read_Valid),
 		// dummy output for address mask
 		.MASK_output(MASK_output)
 	);
@@ -629,7 +626,7 @@ module top
 		.sdram_pll_sharing_pll_avl_phy_clk           (),
 
 		.sdram_afi_clk_clk									(avalon_clk),
-		.sdram_avl_read										(DRAM_Read_Enable),						//.read
+		.sdram_avl_read										(read),										//.read
 		.sdram_avl_write										(DRAM_Write_Enable),                //.write
 		.sdram_avl_address									(DRAM_WR_address),                  //.address
 		.sdram_avl_writedata									(DRAM_Write_Data),                  //.writedata
@@ -637,8 +634,8 @@ module top
 		.sdram_avl_beginbursttransfer						(DRAM_Write_Burst_Begin),           //.beginbursttransfer
 
 		.sdram_avl_waitrequest_n							(DRAM_Wait_Request),                //.sdram_avl.waitrequest_n
-		.sdram_avl_readdata									(DRAM_Read_Data),                   //.readdata
-		.sdram_avl_readdatavalid							(DRAM_Read_Valid)                   //.readdatavalid
+		.sdram_avl_readdata									(read_data),                        //.readdata
+		.sdram_avl_readdatavalid							(read_valid)                        //.readdatavalid
 		);
 
 endmodule
