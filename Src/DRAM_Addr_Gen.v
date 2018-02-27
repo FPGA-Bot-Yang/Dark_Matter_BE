@@ -40,6 +40,10 @@ module DRAM_Addr_Gen(
 	output reg [24:0]  DRAM_Write_Addr,			//{1'b0, BRAM_Sel, channel_sel, in_channel_offset} 0 MSB, 3 bit Board selection, 7 bit channel selection on each board, 14-bit channel offset based on sampling time
 	output reg [255:0] DRAM_Write_Data,
 	
+	output reg			 DRAM_Read_Enable,							
+	input [255:0] 		 DRAM_Read_Data,
+	input 				 DRAM_Read_Valid,
+	
 	// dummy output for address mask
 	output reg		    MASK_output
 );
@@ -193,6 +197,7 @@ module DRAM_Addr_Gen(
 					channel_sel <= 7'd0;
 					waiting_counter <= waiting_counter + 1'b1;				// counter used for generating waiting cycles
 					if(waiting_counter > 2)
+					//if(DRAM_Wait_Request)
 						state <= ARBITRATION;
 					else
 						state <= WAIT;
@@ -213,6 +218,7 @@ module DRAM_Addr_Gen(
 			DRAM_Write_Burst_Count <= 5'd0;
 			DRAM_Write_Addr <= 25'd0;
 			DRAM_Write_Data <= 256'd0;
+			DRAM_Read_Enable <= 1'b0;
 			end
 		else
 			begin
@@ -226,6 +232,7 @@ module DRAM_Addr_Gen(
 				DRAM_Write_Burst_Count <= 5'd0;
 				DRAM_Write_Addr <= 25'd0;
 				DRAM_Write_Data <= 256'd0;
+				DRAM_Read_Enable <= 1'b0;
 				end
 			READFIRSTDATA:
 				begin
@@ -237,6 +244,7 @@ module DRAM_Addr_Gen(
 				DRAM_Write_Burst_Count <= 5'd0;
 				DRAM_Write_Addr <= 25'd0;
 				DRAM_Write_Data <= 256'd0;
+				DRAM_Read_Enable <= 1'b0;
 				end
 			DRAMWRITE:
 				begin
@@ -251,6 +259,7 @@ module DRAM_Addr_Gen(
 					DRAM_Write_Burst_Count <= 5'd1;
 					DRAM_Write_Addr = {1'b0, BRAM_Sel, channel_sel, in_channel_offset};
 					DRAM_Write_Data <= BRAM_rd_data;
+					DRAM_Read_Enable <= 1'b0;
 					end
 				else
 					begin
@@ -262,17 +271,27 @@ module DRAM_Addr_Gen(
 					DRAM_Write_Burst_Count <= 5'd0;
 					DRAM_Write_Addr <= 25'd0;
 					DRAM_Write_Data <= 256'd0;
+					DRAM_Read_Enable <= 1'b0;
 					end
 				end
 			WAIT:
 				begin
 				BRAM_rd_request <= 8'd0;
-				
+				/*
+				// Readout the last data that's been written for verification purpose, only use for testing
+				DRAM_Write_Enable <= 1'b0;
+				DRAM_Write_Burst_Begin <= 1'b1;
+				DRAM_Write_Burst_Count <= 5'd1;
+				DRAM_Write_Addr <= 25'h01EC000;
+				DRAM_Write_Data <= 256'd0;
+				DRAM_Read_Enable <= 1'b1;
+				*/
 				DRAM_Write_Enable <= 1'b0;
 				DRAM_Write_Burst_Begin <= 1'b0;
 				DRAM_Write_Burst_Count <= 5'd0;
 				DRAM_Write_Addr <= 25'd0;
 				DRAM_Write_Data <= 256'd0;
+				DRAM_Read_Enable <= 1'b0;
 				end
 			
 			endcase
